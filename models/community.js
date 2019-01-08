@@ -6,9 +6,17 @@ module.exports = function(sequelize, DataTypes) {
       },
       description: {
         type: DataTypes.TEXT,
-        validate: {len: [1]}
+        notNull: true,
+        len: [1]
       }
-    }
-    );
+    });
+
+    Community.associate = function(models) {
+      // Associating Author with Posts
+      // When an Author is deleted, also delete any associated Posts
+      Community.hasMany(models.Event, {
+        onDelete: "cascade"
+      });
+    };
     return Community; 
 };
