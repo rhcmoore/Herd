@@ -17,7 +17,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./controllers/herd_controller.js")(app);
+require("./controllers/herd_controllers.js")(app);
 
 // Requiring our models for syncing
 var db = require("./models");
