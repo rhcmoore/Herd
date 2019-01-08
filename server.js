@@ -17,7 +17,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./controllers/herd_controller.js")(app);
+require("./controllers/herd_controllers.js")(app);
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -27,6 +27,6 @@ var db = require("./models");
 
 db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
+      console.log(`App listening on PORT ${PORT} -- http://localhost:${PORT}/`);
     });
 });
