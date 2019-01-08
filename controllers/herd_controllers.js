@@ -4,7 +4,12 @@ module.exports = function(app) {
 
     //home page
     app.get("/", function(req,res){
-          
+        db.Community.findAll({}).then(function(data) {
+            var hbsObject = {
+                communities: data
+            };
+            res.render("index", hbsObject);
+        });
     }); 
     //community page
     app.get("/:community", function(req,res){
