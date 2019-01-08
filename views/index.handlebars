@@ -1,0 +1,39 @@
+{{!-- jumbotron for home page --}}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+{{!-- search bar here --}}
+
+
+
+
+
+{{!-- render events here --}}
+<h3>Popular Events</h3>
+
+<div class="container">
+    <div class="row">
+        <div>
+            {{#each events}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+
+
+{{!-- render communities here --}}
+<h3>Popular Communities</h3>
+
+<div class="container">
+    <div class="row">
+        <div>
+            {{#each communities}}
+            {{/each}}
+        </div>
+    </div>
+</div>
