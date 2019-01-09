@@ -1,24 +1,23 @@
 	<script src="/js/newevent.js" type="text/javascript"></script>
 
 <div class="container">
-    {{!-- <div class="row">
-        <div class="col-md-2 col-sm-2">
-            <a class="btn btn-default" href="/blog">Go to Blog</a>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <a class="btn btn-default" href="/authors">Manage Authors</a>
-        </div>
-    </div> --}}
+
 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form id="newCommunityForm">
+            <form id="newEventForm">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input placeholder="Post Name" type="text" class="form-control" id="name">
                     <br />
+                    <label for="date">Date:</label>
+                    <input placeholder="Post Date" type="text" class="form-control" id="date">
+                    <br />
                     <label for="description">Description:</label>
-                    <textarea placeholder="Post Body" class="form-control" rows="10" id="description"></textarea>
+                    <textarea placeholder="Post Description" class="form-control" rows="10" id="description"></textarea>
+                    <br />
+                    <label for="max-attendees">Max Attendees:</label>
+                    <input placeholder="Post Max Attendees" type="text" class="form-control" id="max-attendees">
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>

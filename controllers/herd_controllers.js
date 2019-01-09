@@ -77,7 +77,7 @@ module.exports = function(app) {
         db.Event.create({
             name: req.body.name,
             date: req.body.date,
-            description: req.body.body,
+            description: req.body.description,
             max_attendees: req.body.max_attendees,
             communityId: communityId
         }).then(function(result){
