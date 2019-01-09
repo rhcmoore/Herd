@@ -1,18 +1,28 @@
-<form action="/community" method="post" class="community-form column">
-    <input type="text" name="name" placeholders="community name">
-    <button>submit</button>
-</form>
+	<script src="/js/newevent.js" type="text/javascript"></script>
 
-<h1>event listings</h1>
+<div class="container">
+    {{!-- <div class="row">
+        <div class="col-md-2 col-sm-2">
+            <a class="btn btn-default" href="/blog">Go to Blog</a>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <a class="btn btn-default" href="/authors">Manage Authors</a>
+        </div>
+    </div> --}}
 
-<div class="row">
-    {{community}}
-    <h2>{{name}}</h2>
-    <form action="/api/{{name}}/event/new" method="post" class="column">
-        <input type="text" name="name" placeholder="event name">
-        <input type="text" name="description" placeholder="description">
-        <input type="text" name="date" placeholder="date">
-        <input type="text" name="max_attendees" placeholder="max attendees">
-        <button type="submit">add event</button>
-    </form>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form id="newCommunityForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input placeholder="Post Name" type="text" class="form-control" id="name">
+                    <br />
+                    <label for="description">Description:</label>
+                    <textarea placeholder="Post Body" class="form-control" rows="10" id="description"></textarea>
+                    <br />
+                    <button type="submit" class="btn btn-success submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
