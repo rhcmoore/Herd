@@ -62,7 +62,7 @@ module.exports = function(app) {
     });
 
     //create new community
-    app.post("community", function(req, res) {
+    app.post("/api/:community/new", function(req, res) {
         db.Community.create({
             name: req.body.name,
             description: req.body.description
