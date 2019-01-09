@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:700|Nunito+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Archivo+Black|Roboto+Slab:700|Nunito+Sans:400,600');
 
 header {
     font-family: 'Nunito Sans', sans-serif;
@@ -27,7 +27,7 @@ header {
 .logo {
     display: inline-block;
     margin: 20px;
-    width: 100px;
+    width: 300px;
     text-align: center;
     position: relative;
     z-index: 5;
@@ -39,11 +39,14 @@ header {
     display: inline-block;
     font-size: 28px;
     font-weight: 600;
-    margin-top: 70px;
+    margin-top: 46px;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 h2 {
-    color: #fff;
+    color: #000;
+    font-family: 'Archivo Black', serif;
+    font-size: 28px;
 }
 
 h3 {
@@ -65,6 +68,7 @@ h3 {
     padding: 10px;
     position: relative;
     white-space: normal;
+    margin-bottom: 20px;
 }
 
 .card p {
