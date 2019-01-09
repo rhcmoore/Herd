@@ -26,7 +26,7 @@ module.exports = function(app) {
             var hbsObject = {
                 Events: data
             };
-            res.render("index", hbsObject);
+            res.render("community", hbsObject);
         });
     }); 
     //event page
@@ -36,7 +36,7 @@ module.exports = function(app) {
             var hbsObject = {
                 Events: data
             };
-            res.render("index", hbsObject);
+            res.render("event", hbsObject);
         });
     }); 
 
