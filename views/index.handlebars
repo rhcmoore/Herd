@@ -14,12 +14,17 @@
 
 {{!-- render events here --}}
 <h3>Popular Events</h3>
-
 <div class="container">
     <div class="row">
         <div>
-            {{#each events}}
+            {{#each communities}}
+            {{#each Events}}
+                <div>Event name: {{name}}</div>
+                <div>Event description: {{description}}</div>
+                <div>Event time: {{time}}</div>
             {{/each}}
+            {{/each}}
+
         </div>
     </div>
 </div>
@@ -33,6 +38,8 @@
     <div class="row">
         <div>
             {{#each communities}}
+                <div>Commnunity name: {{name}}</div>
+                <div>Community description: {{description}}</div>
             {{/each}}
         </div>
     </div>
