@@ -1,23 +1,22 @@
 <header>
-    <img class="logo" src="../img/herd-logo.png">
-    <h1 class="display">Herd</h1>
+    <img class="logo" src="../img/HERD.png">
+    <br>
     <h2 class="lead">Join the event. Create your community.</h2> 
 </header>
 <div class="container">
     <h2>Top Events</h2>
     <div class="row">
-        <div class="col col-lg-3">
-        <div class="card">
             {{#each communities}}
             {{#each Events}}
-                <div>Event name: {{name}}</div>
-                <div>Event description: {{description}}</div>
-                <div>Event time: {{time}}</div>
+                <div class="col col-lg-3">
+                    <div class="card">
+                        <h3>{{name}}</h3>
+                        <p>About: {{description}}</p>
+                        </p>Event time: {{time}}</p>
+                    </div>
+                </div>
             {{/each}}
             {{/each}}
-
-        </div>
-        </div>
     </div>
     <h2>Popular Communities</h2>
     <div class="row">
