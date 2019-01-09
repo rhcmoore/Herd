@@ -1,22 +1,13 @@
-{{!-- jumbotron for home page --}}
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div>
-
-{{!-- search bar here --}}
-
-
-
-
-
-{{!-- render events here --}}
-<h3>Popular Events</h3>
+<header>
+    <img class="logo" src="../img/herd-logo.png">
+    <h1 class="display">Herd</h1>
+    <h2 class="lead">Join the event. Create your community.</h2> 
+</header>
 <div class="container">
+    <h2>Top Events</h2>
     <div class="row">
-        <div>
+        <div class="col col-lg-3">
+        <div class="card">
             {{#each communities}}
             {{#each Events}}
                 <div>Event name: {{name}}</div>
@@ -26,22 +17,18 @@
             {{/each}}
 
         </div>
-    </div>
-</div>
-
-
-
-{{!-- render communities here --}}
-<h3>Popular Communities</h3>
-
-<div class="container">
-    <div class="row">
-        <div>
-            {{#each communities}}
-                <div>Commnunity name: {{name}}</div>
-                <div>Community description: {{description}}</div>
-
-            {{/each}}
         </div>
     </div>
+    <h2>Popular Communities</h2>
+    <div class="row">
+        {{#each communities}}
+            <div class="col col-lg-3">
+                <div class="card">
+                <h3>{{name}}</h3>
+                <p>{{description}}</p>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </div>
+
