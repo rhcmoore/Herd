@@ -6,9 +6,9 @@ module.exports = function(app) {
     app.get("/", function(req,res){
 
         db.Community.findAll({
-            include: [{
-                model: db.Event
-            }]
+            // include: [{
+            //     model: db.Event
+            // }]
         }).then(function(data) {
             var hbsObject = {
                 communities: data
@@ -20,9 +20,9 @@ module.exports = function(app) {
     app.get("/:community", function(req,res){
         var communityId = req.query.community_id;
         db.Event.findAll({
-            include: [{
-                where: {communityId: communityId}
-            }]
+            // include: [{
+            //     where: {communityId: communityId}
+            // }]
         }).then(function(data) {
             var hbsObject = {
                 Events: data
@@ -41,8 +41,28 @@ module.exports = function(app) {
         });
     }); 
 
+    //create new community page
+    app.get("/api/community/new", function (req,res){
+        res.render("newcommunity");
+    });
+
+    //create new event page
+    app.get("/api/:community/event/new", function (req,res){
+
+        db.Community.findOne({
+            where:{
+                name: req.params.Community
+            }
+        }).then(function(result){
+            var hbsObject = {
+                community:result
+            }
+            res.render("newevent", hbsObject);
+        })
+    });
+
     //create new community
-    app.post("/api/community/new", function(req, res) {
+    app.post("community", function(req, res) {
         db.Community.create({
             name: req.body.name,
             description: req.body.description
