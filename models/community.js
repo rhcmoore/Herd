@@ -10,13 +10,16 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     });
-
-    Community.associate = function(models) {
-      // Associating Author with Posts
-      // When an Author is deleted, also delete any associated Posts
+    
+    Community.associate = function(models){
+      // Community.belongsToMany(models.Event, {
+      //   through: {model: models.communityEvent},
+      //   foreignKey:'owner'
+      // });
       Community.hasMany(models.Event, {
         onDelete: "cascade"
       });
-    };
+    }
+  
     return Community; 
 };
