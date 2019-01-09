@@ -6,12 +6,12 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-        var communityId;
-        var communityName;
+        var communityId = 1;
+        var communityName = "Title";
         var name = $("#name").val().trim();
         var date = $("#date").val();
-        var description = $("#description").val().trim();
-        var max_attendees = $("#max-attendees").val();
+        var description = $("#description").val();
+        var max_attendees = $("#max-attendees").val().trim();
 
 
         if (!name || !date  || !description || !max_attendees) {
@@ -26,9 +26,9 @@ $(document).ready(function() {
             communityId: communityId
         }
 
-        $.post("/api/:community/event/new", newCommunity, function() {
+        $.post("/api/:community/event/new", newEvent, function(data) {
             window.location.href = "/"+ communityName + "/" + name;
-          });
+        });
  
 
     }
