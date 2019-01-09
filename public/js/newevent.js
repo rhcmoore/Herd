@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
 
-
+    //this code does something
     function postEvent(event){
         event.preventDefault();
         var communityId;
