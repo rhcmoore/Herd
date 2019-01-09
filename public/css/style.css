@@ -26,6 +26,7 @@ header {
 
 .logo {
     display: inline-block;
+    margin: 20px;
     width: 100px;
     text-align: center;
     position: relative;
@@ -34,11 +35,11 @@ header {
 
 .lead {
     color: #fff;
-    background: #000;
     padding: 4px 8px;
     display: inline-block;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 600;
+    margin-top: 70px;
 }
 
 h2 {
@@ -61,14 +62,17 @@ h3 {
     box-sizing: border-box;
     display: block;
     min-height: 160px;
-    padding: 16px 16px 0;
-    padding: var(--responsive-space) var(--responsive-space) 0;
+    padding: 10px;
     position: relative;
     white-space: normal;
 }
 
 .card p {
     font-size: 18px;
+}
+
+.container {
+    padding-bottom: 40px;
 }
 
 @media screen and (max-width: 480px) {
