@@ -1,0 +1,18 @@
+<form action="/community" method="post" class="community-form column">
+    <input type="text" name="name" placeholders="community name">
+    <button>submit</button>
+</form>
+
+<h1>event listings</h1>
+
+<div class="row">
+    {{community}}
+    <h2>{{name}}</h2>
+    <form action="/api/{{name}}/event/new" method="post" class="column">
+        <input type="text" name="name" placeholder="event name">
+        <input type="text" name="description" placeholder="description">
+        <input type="text" name="date" placeholder="date">
+        <input type="text" name="max_attendees" placeholder="max attendees">
+        <button type="submit">add event</button>
+    </form>
+</div>

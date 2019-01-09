@@ -18,12 +18,13 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    Event.associate = function(models) {
+    Event.associate = function(models){
       Event.belongsTo(models.Community, {
-        foreignKey: {
+        foreignKey:{
           allowNull: false
         }
-      });
-    };
+      })
+    }
+ 
     return Event; 
 };
