@@ -4,6 +4,7 @@ module.exports = function(app) {
 
     //home page
     app.get("/", function(req,res){
+
         db.Community.findAll({
             include: [{
                 model: db.Event
