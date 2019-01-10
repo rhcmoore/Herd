@@ -23,6 +23,13 @@ module.exports = function(app) {
         res.render("login");
     });
 
+
+    //create new user page
+
+    app.get("/api/createuser", function(req, res){
+        res.render("createuser");
+    })
+
     //community page
     app.get("/community/:community", function(req,res){
         var communityId = req.query.community_id;
@@ -53,7 +60,7 @@ module.exports = function(app) {
     });
 
     //create new event page
-    app.get("/api/:community/event/new", function (req,res){
+    app.get("/api/community/:community/event/new", function (req,res){
 
         db.Community.findOne({
             where:{
@@ -89,6 +96,18 @@ module.exports = function(app) {
         }).then(function(result){
             res.json(result);
         })
+    });
+
+    //create new user
+    app.post("/api/createuser", function(req, res){
+        db.User.create({
+            username: req.body.username,
+            password: req.body.password,
+            name: req.body.name
+        }).then(function(result){
+            res.json(result);
+        })
+
     });
 
     //update community
@@ -144,24 +163,5 @@ module.exports = function(app) {
         });
     });
 
-    //=================================optional=========================================
 
-    //create new user page
-    app.get("/api/createuser"), function(req, res){
-        res.render("newuser");
-    }
-
-
-
-    //create new user
-    app.post("/api/createuser"), function(req, res){
-        db.User.create({
-            username: req.body.username,
-            password: req.body.password,
-            name: req.body.name
-        }).then(function(result){
-            res.json(result);
-        })
-
-    }
 };
