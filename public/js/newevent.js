@@ -34,17 +34,13 @@ $(document).ready(function() {
 
     var date = new Date();
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    var nextYear = new Date(date.getFullYear() + 1);
     
     $.datetimepicker.setLocale('en');
     
     $("#date").datetimepicker({
     dayOfWeekStart : 1,
     lang: 'en',
-    startDate: today,
     value: today,
-    minDate: 0,
-    maxDate: nextYear,
     step: 30
     });
 });
