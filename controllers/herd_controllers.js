@@ -30,7 +30,8 @@ module.exports = function(app) {
             where: {communityId: communityId}
         }).then(function(data) {
             var hbsObject = {
-                Events: data
+                Events: data,
+                Community: req.params.community
             };
             res.render("community", hbsObject);
         });

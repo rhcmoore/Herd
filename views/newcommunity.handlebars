@@ -1,4 +1,4 @@
-	<script src="/js/newcommunity.js" type="text/javascript"></script>
+<script src="/js/newcommunity.js" type="text/javascript"></script>
 
 <div class="container">
     {{!-- <div class="row">
@@ -9,20 +9,22 @@
             <a class="btn btn-default" href="/authors">Manage Authors</a>
         </div>
     </div> --}}
-
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-lg-3"></div>
+        <div class="col-md-6 col-md-offset-3 align-center">
+            <h2>Create a New Community</h2>
             <form id="newCommunityForm">
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input placeholder="Post Name" type="text" class="form-control" id="name">
+                    <label for="name">Community Name:</label>
+                    <input placeholder="San Francisco Developers" type="text" class="form-control" id="name">
                     <br />
                     <label for="description">Description:</label>
-                    <textarea placeholder="Post Body" class="form-control" rows="10" id="description"></textarea>
+                    <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description"></textarea>
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>
             </form>
         </div>
+        <div class="col-lg-3"></div>
     </div>
 </div>
