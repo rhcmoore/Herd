@@ -26,7 +26,7 @@ $(document).ready(function() {
             communityId: communityId
         }
 
-        $.post("/api/:community/event/new", newEvent, function(data) {
+        $.post("/api/community/:community/event/new", newEvent, function(data) {
             window.location.href = "/"+ communityName + "/" + name;
         });
  

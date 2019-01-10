@@ -1,11 +1,15 @@
 // THIS MODEL IS NOT YET BEING USED
+
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
-      Username: {
+      username: {
         type: DataTypes.STRING,
-        validate: {len: [1]}
+        unique: true
       },
-      Password: {
+      password: {
+        type: DataTypes.STRING
+      },
+      name:{
         type: DataTypes.STRING
       }
     }

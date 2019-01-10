@@ -5,12 +5,12 @@
             <br>
             <div><h2 class="lead" id="lead-main"> Join the event</h2> </div>
             <div><h2 class="lead" id="lead-sub">Create your community</h2> </div>
-            <div id="sign-up"><a href="#" class="btn btn-primary">Sign Up</a></div>
+            <div id="sign-up"><a href="/api/createuser" class="btn btn-primary">Sign Up</a></div>
         </header>
     </div>
     <div class="row" id="events-row">
         <div class="container">
-            <h2 class="row-title">Top Events</h2>
+            <h2 class="row-title">Top Events</h2> 
             <div class="row" >
                     {{#each communities}}
                     {{#each Events}}
@@ -32,7 +32,10 @@
     </div>
     <div class="row" id="communities-row">
         <div class="container">
-            <h2 class="row-title">Popular Communities <span><a href="/api/community/new">(+ Add)</a></span> </h2>
+            <div class="row">
+                <h2 class="row-title">Popular Communities  </h2>
+                <a href="/api/community/new">create community</a>
+            </div>
             <div class="row" >
                 {{#each communities}}
                     <div class="col col-lg-4">
@@ -42,7 +45,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{name}}</h5>
                                 <p class="card-text">{{description}}</p>
-                                <div id="visit-community"><a href="/{{name}}" class="btn btn-primary">Visit</a></div>
+                                <div id="visit-community"><a href="/community/{{name}}" class="btn btn-primary">Visit</a></div>
                             </div>
                         </div>
                     </div>
