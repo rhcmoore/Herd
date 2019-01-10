@@ -32,14 +32,15 @@ module.exports = function(app) {
 
     //community page
     app.get("/community/:community", function(req,res){
-        var communityId = req.query.id;
+        var communityId = req.query.communityId;
         console.log(communityId);
         db.Event.findAll({
             where: {communityId: communityId}
         }).then(function(data) {
             var hbsObject = {
                 Events: data,
-                Community: req.params.community
+                Community: req.params.community,
+                communityId: communityId
             };
             res.render("community", hbsObject);
         });
@@ -65,7 +66,7 @@ module.exports = function(app) {
 
         db.Community.findOne({
             where:{
-                name: req.params.Community
+                name: req.params.community
             }
         }).then(function(result){
             var hbsObject = {
@@ -87,13 +88,13 @@ module.exports = function(app) {
 
     //create new event
     app.post("/api/community/:community/event/new", function(req, res) {
-        var communityId = req.query.communityId;
+       console.log("community id: " + req.body.communityId);
         db.Event.create({
             name: req.body.name,
             date: req.body.date,
             description: req.body.description,
             max_attendees: req.body.max_attendees,
-            communityId: communityId
+            CommunityId: req.body.communityId
         }).then(function(result){
             res.json(result);
         })
@@ -125,7 +126,7 @@ module.exports = function(app) {
 
     });
 
-    //upodate event
+    //update event
     app.put("/api/community/:community/:event/:id", function(req, res) {
         var eventId = req.params.req.params.id;
         db.Event.update({

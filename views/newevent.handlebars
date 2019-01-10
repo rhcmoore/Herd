@@ -7,7 +7,9 @@
         <div class="col-lg-3"></div>
         <div class="col-md-6 col-md-offset-3">
             <h2>Create a New Event</h2>
-            <form id="newEventForm" class="needs-validation" novalidate>
+
+            <form id="newEventForm" data-name="{{community.name}}" data-id="{{community.id}}" class="needs-validation" novalidate>
+
                 <div class="form-group">
                     <label for="name">Event Name:</label>
                     <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name" required>
