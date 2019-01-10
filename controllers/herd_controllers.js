@@ -32,7 +32,8 @@ module.exports = function(app) {
 
     //community page
     app.get("/community/:community", function(req,res){
-        var communityId = req.query.community_id;
+        var communityId = req.query.id;
+        console.log(communityId);
         db.Event.findAll({
             where: {communityId: communityId}
         }).then(function(data) {
