@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $(newCommunityForm).on("submit",postCommunity);
+    $("#newCommunityForm").on("submit",postCommunity);
 
 
     //to-do: comment this code
@@ -23,5 +23,5 @@ $(document).ready(function() {
             window.location.href = "/"+ name;
           });
     }
-
+    
 });
