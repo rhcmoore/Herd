@@ -48,9 +48,11 @@ module.exports = function(app) {
     //event page
     app.get("/community/:community/event/:event", function(req,res){
         var eventId = req.query.eventId;
-        db.Event.findAll().then(function(data) {
+        db.Event.findAll({
+            where: {id: eventId}
+        }).then(function(data) {
             var hbsObject = {
-                Events: data
+                Event: data
             };
             res.render("event", hbsObject);
         });
