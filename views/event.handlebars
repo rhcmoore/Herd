@@ -1,12 +1,62 @@
-<h3>Event info</h3>
-<div class="container">
+<div class="container-fluid" id="event-background">
     <div class="row">
-        <div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
             {{#each Event}}
-            <div>Event name: {{name}}</div>
-            <div>Event description: {{description}}</div>
-            <div>Event time: {{date}}</div>
+            {{!-- <div class="event-content">
+                <h3>{{name}}</h3>
+                <h4>{{date}}</h4>
+                <p>Event description: {{description}}</p>
+                <div class="event-spacer event-page-spacer"></div>
+            </div> --}}
+            <div class="card event-content">
+                {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                <div class="card-body">
+                    <h3 class="card-title">{{name}}</h3>
+                    <h4 class="card-text">{{date}}</h4>
+                    <p class="card-text">{{description}}</p>
+                </div>
+                <div class="event-page-spacer event-spacer"></div>
+                <div class="row">
+                    <div class="col-lg-8 attendee-area">
+                        Attendees:
+                        <div class="row">
+                            <div class="col-lg-3 attendee">
+                                <p class="attendee-name">Ryan Moore</p>
+                                <p>(101) 121-2323</p>
+                            </div>
+                            <div class="col-lg-3 attendee">
+                                <p class="attendee-name">Zoe Chang</p>
+                                <p>(101) 121-2323</p>
+                            </div>
+                            <div class="col-lg-3 attendee">
+                                <p class="attendee-name">Jack Li</p>
+                                <p>(101) 121-2323</p>
+                            </div>
+                            <div class="col-lg-3 attendee">
+                                <p class="attendee-name">Geri Craig</p>
+                                <p>(101) 121-2323</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 attendee-area">
+                        <form id="newEventAttendee" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input placeholder="Rick James" type="text" class="form-control" id="name" required>
+                                <br>
+                                <label for="description">Phone:</label>
+                                <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description" required></textarea>
+                                <br>
+                                <button type="submit" class="btn btn-success submit">I'm Coming Too!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
             {{/each}}
         </div>
+        <div class="col-lg-2"></div>
     </div>
 </div>

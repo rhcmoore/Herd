@@ -95,6 +95,11 @@ h2 {
     height: 14em;
 }
 
+.event-page-spacer {
+    width: 100%;
+    height: 24em;
+}
+
 .event-spacer {
     background-color: #ff598f;
 }
@@ -111,5 +116,34 @@ h2 {
     background: white;
 }
 #communities-row {
-    /* background: lightpink; */
+    background: white;
+}
+
+#event-background {
+    background-color: white;
+}
+
+.event-content {
+    box-shadow: 5px 5px 15px #888888;
+    padding: 5%;
+    margin-top: 5%;
+}
+
+.event-page-spacer {
+    height: 300px;
+}
+
+.attendee-area {
+    margin-top: 1%;
+}
+
+.attendee {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 20px 5px;
+    margin: 5px;
+}
+.attendee-name {
+    color: coral;
+    font-weight: 500;
 }
