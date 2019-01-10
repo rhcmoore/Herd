@@ -13,13 +13,13 @@
         <div class="col-lg-3"></div>
         <div class="col-md-6 col-md-offset-3 align-center">
             <h2>Create a New Community</h2>
-            <form id="newCommunityForm">
+            <form id="newCommunityForm" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="name">Community Name:</label>
-                    <input placeholder="San Francisco Developers" type="text" class="form-control" id="name">
+                    <input placeholder="San Francisco Developers" type="text" class="form-control" id="name" required>
                     <br />
                     <label for="description">Description:</label>
-                    <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description"></textarea>
+                    <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description" required></textarea>
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>

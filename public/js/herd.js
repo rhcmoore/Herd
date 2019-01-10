@@ -11,4 +11,15 @@ $(document).ready(function() {
     $('h3').each(function(i){
         $(this).css('color', selected[i]);
     });
+
+    $(".submit").click(function(event) {
+        var form = $('form');
+    
+        if (form[0].checkValidity() === false) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        
+        form.addClass('was-validated');    
+    });
 });

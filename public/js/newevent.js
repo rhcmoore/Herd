@@ -40,7 +40,7 @@ $(document).ready(function() {
     $("#date").datetimepicker({
     dayOfWeekStart : 1,
     lang: 'en',
-    value: today,
+    value: today + "0:00",
     step: 30
     });
 });

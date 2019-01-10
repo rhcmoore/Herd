@@ -7,19 +7,19 @@
         <div class="col-lg-3"></div>
         <div class="col-md-6 col-md-offset-3">
             <h2>Create a New Event</h2>
-            <form id="newEventForm">
+            <form id="newEventForm" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="name">Event Name:</label>
-                    <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name">
+                    <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name" required>
                     <br />
                     <label for="date">Date:</label>
-                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date">
+                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" required>
                     <br />
                     <label for="description">Event Description:</label>
-                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description"></textarea>
+                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" required></textarea>
                     <br />
                     <label for="max-attendees">Max Attendees:</label>
-                    <input placeholder="30" type="text" class="form-control" id="max-attendees">
+                    <input placeholder="30" type="number" class="form-control" id="max-attendees" required>
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>
