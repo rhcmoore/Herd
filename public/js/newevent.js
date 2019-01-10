@@ -28,7 +28,18 @@ $(document).ready(function() {
         $.post("/api/community/:community/event/new", newEvent, function(data) {
             window.location.href = "/community/"+ communityName + "/event/" + name;
         });
- 
 
     }
+
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    
+    $.datetimepicker.setLocale('en');
+    
+    $("#date").datetimepicker({
+    dayOfWeekStart : 1,
+    lang: 'en',
+    value: today,
+    step: 30
+    });
 });

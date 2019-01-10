@@ -57,7 +57,7 @@ module.exports = function(app) {
     }); 
 
     //create new community page
-    app.get("/api/community/new", function (req,res){
+    app.get("/api/community/:community/new", function (req,res){
         res.render("newcommunity");
     });
 
@@ -77,7 +77,7 @@ module.exports = function(app) {
     });
 
     //create new community
-    app.post("/api/community/new", function(req, res) {
+    app.post("/api/community/:community/new", function(req, res) {
         db.Community.create({
             name: req.body.name,
             description: req.body.description
