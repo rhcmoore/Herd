@@ -6,9 +6,9 @@ module.exports = function(app) {
     app.get("/", function(req,res){
 
         db.Community.findAll({
-            // include: [{
-            //     model: db.Event
-            // }]
+            include: [{
+                model: db.Event
+            }]
         }).then(function(data) {
             var hbsObject = {
                 communities: data
@@ -25,7 +25,8 @@ module.exports = function(app) {
             // }]
         }).then(function(data) {
             var hbsObject = {
-                Events: data
+                Events: data,
+                Community: req.params.community
             };
             res.render("community", hbsObject);
         });
