@@ -1,12 +1,29 @@
-<h3>Popular Events</h3>
 <div class="container">
     <div class="row">
         <div>
-            {{#each Events}}
+            {{!-- {{#each Events}}
                 <div>Event name: {{name}}</div>
                 <div>Event description: {{description}}</div>
                 <div>Event time: {{time}}</div>
-            {{/each}}
+            {{/each}} --}}
+            <div class="container">
+            <h2 class="row-title">{{Community}} Events <span><a href="/api/{{Community}}/event/new">(+ Add)</a></span></h2>
+            <div class="row" >
+                    {{#each Events}}
+                        <div class="col col-lg-4">
+                            <div class="card">
+                                {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                                <div class="color-spacer event-spacer"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text">{{description}}</p>
+                                    <p class="card-text">{{date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+            </div>
+        </div>
         </div>
     </div>
 </div>

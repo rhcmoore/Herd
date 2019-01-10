@@ -1,33 +1,54 @@
-<header>
-    <img class="logo" src="../img/HERD.png">
-    <br>
-    <h2 class="lead">Join the event. Create your community.</h2> 
-</header>
-<div class="container">
-    <h2>Top Events</h2>
+<div class="container-fluid">
     <div class="row">
-            {{#each communities}}
-            {{#each Events}}
-                <div class="col col-lg-3">
-                    <div class="card">
-                        <h3>{{name}}</h3>
-                        <p>About: {{description}}</p>
-                        </p>Event time: {{time}}</p>
-                    </div>
-                </div>
-            {{/each}}
-            {{/each}}
+        <header>
+            <img class="logo" src="../img/HERD.png">
+            <br>
+            <div><h2 class="lead" id="lead-main"> Join the event</h2> </div>
+            <div><h2 class="lead" id="lead-sub">Create your community</h2> </div>
+            <div id="sign-up"><a href="#" class="btn btn-primary">Sign Up</a></div>
+        </header>
     </div>
-    <h2>Popular Communities</h2>
-    <div class="row">
-        {{#each communities}}
-            <div class="col col-lg-3">
-                <div class="card">
-                <h3>{{name}}</h3>
-                <p>{{description}}</p>
-                </div>
+    <div class="row" id="events-row">
+        <div class="container">
+            <h2 class="row-title">Top Events</h2>
+            <div class="row" >
+                    {{#each communities}}
+                    {{#each Events}}
+                        <div class="col col-lg-4">
+                            <div class="card">
+                                {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                                <div class="color-spacer event-spacer"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text">{{description}}</p>
+                                    <p class="card-text">{{date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    {{/each}}
             </div>
-        {{/each}}
+        </div>
+    </div>
+    <div class="row" id="communities-row">
+        <div class="container">
+            <h2 class="row-title">Popular Communities <span><a href="/api/community/new">(+ Add)</a></span> </h2>
+            <div class="row" >
+                {{#each communities}}
+                    <div class="col col-lg-4">
+                        <div class="card">
+                            {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                            <div class="color-spacer community-spacer"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{name}}</h5>
+                                <p class="card-text">{{description}}</p>
+                                <div id="visit-community"><a href="/{{name}}" class="btn btn-primary">Visit</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </div>
 
