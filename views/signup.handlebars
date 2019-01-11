@@ -6,15 +6,20 @@
         <div class="col-md-6 col-md-offset-3">
         <div class="card event-content">
         <div class="login-form needs-validation">
-            <h3>Login Form</h3>
-            <form d="signup" action="auth" method="POST" novalidate>
+            <h3>Sign up Form</h3>
+            <form id="signup" novalidate>
          
                 <div class="form-group">
+                    <label for="username">Username:</label>
                     <input name="username" placeholder="Username" type="text" class="form-control" id="username" required>
                     <br />
+                    <label for="password">Password:</label>
                     <input name="password" placeholder="Password" type="password" class="form-control" id="password" required>
                     <br />
-                    <button type="submit" class="btn btn-success submit">Submit</button>
+                    <label for="name">Name:</label>
+                     <input name="name" placeholder="Name" type="text" class="form-control" id="name" required>
+                    <br />
+                    <button type="submit" class="btn btn-success submit">Sign up</button>
                 </div>
             </form>
         </div>
