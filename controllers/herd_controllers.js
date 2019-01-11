@@ -49,7 +49,10 @@ module.exports = function(app) {
     app.get("/community/:community/event/:event", function(req,res){
         var eventId = req.query.eventId;
         db.Event.findAll({
-            where: {id: eventId}
+            where: {id: eventId},
+            include: [{
+                model: db.Attendee
+            }]
         }).then(function(data) {
             var hbsObject = {
                 Event: data
@@ -114,6 +117,18 @@ module.exports = function(app) {
 
     });
 
+    //new event attendee
+    app.post("/api/attendee", function(req, res){
+        console.log(req.body.eventId)
+        db.Attendee.create({
+            name: req.body.name,
+            description: req.body.description,
+            EventId: req.body.eventId
+        }).then(function(result){
+            res.json(result);
+        })
+    });
+
     //update community
     app.put("/api/community/:community/:id", function(req, res) {
         var communityId = req.params.id;
@@ -129,7 +144,7 @@ module.exports = function(app) {
     });
 
     //update event
-    app.put("/api/community/:community/:event/:id", function(req, res) {
+    app.put("/api/community/:community/event/:event/:id", function(req, res) {
         var eventId = req.params.req.params.id;
         db.Event.update({
             name: req.body.name,

@@ -1,3 +1,6 @@
+<script src="/js/event.js" type="text/javascript"></script>
+
+
 <div class="container-fluid" id="event-background">
     <div class="row">
         <div class="col-lg-2"></div>
@@ -41,7 +44,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 attendee-area">
-                        <form id="newEventAttendee" class="needs-validation" novalidate>
+                        <form id="newEventAttendee" class="needs-validation" data-id="{{id}}"novalidate>
                             <div class="form-group">
                                 <label for="name">Name:</label>
                                 <input placeholder="Rick James" type="text" class="form-control" id="name" required>
