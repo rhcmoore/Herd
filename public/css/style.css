@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Francois+One|Archivo+Black|Roboto+Slab:700|Nunito+Sans:400,600');
-
+html{
+    height:100%
+}
 header {
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
@@ -11,11 +13,24 @@ header {
     height: 40%;
     min-height: 100%;
 }
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom:6em;
+    min-height: 100%;
+}
 
 .background {
     width: 100%;
     z-index: -1;
     text-align: center;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    left: 0;
 }
 
 .logo {
