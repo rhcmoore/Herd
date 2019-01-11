@@ -20,7 +20,7 @@ $(document).ready(function() {
         }
 
         $.post("/api/community/new", newCommunity, function() {
-            window.location.href = "/"+ name;
+            window.location.href = "/community/"+ name;
           });
     }
     
