@@ -1,10 +1,10 @@
 $(document).ready(function() {
     
-    $(createuser).on("submit", createUser);
+    $(signup).on("submit", signup);
 
 
     //to-do: comment this code
-    function createUser(event){
+    function signup(event){
         event.preventDefault();
 
         var username = $("#username").val().trim();
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
         }
 
-        $.post("/api/createuser", newUser, function() {
+        $.post("/api/signup", newUser, function() {
             window.location.href = "/";
         });
     }
