@@ -13,7 +13,8 @@
                 {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                 <div class="card-body">
                     <h3 class="card-title">{{name}}</h3>
-                    <h4 class="card-text">{{date}}</h4>
+                    <p class="card-text">{{moment d "dddd, MMMM Do YYYY"}}</p>
+                    <p class="card-text">{{moment d "h:mm A"}}</p>
                     <p class="card-text">{{description}}</p>
                 </div>
                 <div class="event-page-spacer event-spacer"></div>
