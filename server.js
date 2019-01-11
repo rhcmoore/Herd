@@ -6,6 +6,7 @@ var PORT = process.env.PORT || 8080;
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
+
 var app = express();
 
 // Static directory
@@ -20,8 +21,15 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main", helpers: require('handlebars-helpers') }));
+
 app.set("view engine", "handlebars");
+
+Handlebars.registerHelper("dot", function(str) {
+  if (str.length > 60)
+    return str.substring(0,60) + '...';
+  return str;
+});
 
 // Routes
 // =============================================================
