@@ -26,8 +26,8 @@ module.exports = function(app) {
 
     //create new user page
 
-    app.get("/api/createuser", function(req, res){
-        res.render("createuser");
+    app.get("/signup", function(req, res){
+        res.render("signup");
     })
 
     //community page
@@ -103,7 +103,7 @@ module.exports = function(app) {
     });
 
     //create new user
-    app.post("/api/createuser", function(req, res){
+    app.post("/api/signup", function(req, res){
         db.User.create({
             username: req.body.username,
             password: req.body.password,

@@ -5,7 +5,7 @@
             <br>
             <div><h2 class="lead" id="lead-main"> Join the event</h2> </div>
             <div><h2 class="lead" id="lead-sub">Create your community</h2> </div>
-            <div id="sign-up"><a href="/api/createuser" class="btn btn-primary">Sign Up</a></div>
+            <div id="sign-up"><a href="/signup" class="btn btn-primary">Sign Up</a></div>
         </header>
     </div>
     <div class="row" id="events-row">
@@ -23,6 +23,7 @@
                                     <p class="card-text">{{description}}</p>
                                     <p class="card-text">{{moment d "dddd, MMMM Do YYYY"}}</p>
                                     <p class="card-text">{{moment d "h:mm A"}}</p>
+                                    <div id="visit-event"><a href="/community/{{../name}}/event/{{name}}?eventId={{id}}" class="btn btn-primary">View Event</a></div>
                                 </div>
                             </div>
                         </div>
