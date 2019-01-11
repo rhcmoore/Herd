@@ -26,7 +26,7 @@ $(document).ready(function() {
         }
 
         $.post("/api/community/:community/event/new", newEvent, function(data) {
-            window.location.href = "/community/"+ communityName + "/event/" + name;
+            window.location.href = "/community/"+ communityName + "/event/" + name + "?eventId="+ data.id;
         });
 
     }

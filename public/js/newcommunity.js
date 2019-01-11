@@ -19,7 +19,8 @@ $(document).ready(function() {
             description: description
         }
 
-        $.post("/api/community/new", newCommunity, function() {
+        $.post("/api/community/new", newCommunity, function(data) {
+
             window.location.href = "/community/"+ name;
           });
     }
