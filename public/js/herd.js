@@ -25,4 +25,5 @@ $(document).ready(function() {
 
     var dateTime = $("#date-time").val();
     dateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+
 });
