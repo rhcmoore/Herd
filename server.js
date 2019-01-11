@@ -3,7 +3,9 @@ var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var path = require("path");
 var PORT = process.env.PORT || 8080;
-
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 var app = express();
 
 // Static directory

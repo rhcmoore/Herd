@@ -22,4 +22,7 @@ $(document).ready(function() {
         
         form.addClass('was-validated');    
     });
+
+    var dateTime = $("#date-time").val();
+    dateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
 });
