@@ -37,9 +37,12 @@ $(document).ready(function() {
     $.datetimepicker.setLocale('en');
     
     $("#date").datetimepicker({
+    startDate: today,
+    minDate : 0,
     dayOfWeekStart : 1,
     lang: 'en',
     value: today + "0:00",
     step: 30
     });
+
 });
