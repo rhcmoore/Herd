@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    $(loginform).on("submit",login);
+    $("#loginform").on("submit", login);
 
 
     //to-do: comment this code
@@ -8,9 +8,10 @@ $(document).ready(function() {
         event.preventDefault();
         var username = $("#username").val().trim();
         var password = $("#password").val();;
-        if (!name || !password) {
-            return;
-        }
+        // if (!name || !password) {
+        //     return;
+        // }
+       
 
         var loginInfo ={
             username: username,
@@ -18,6 +19,8 @@ $(document).ready(function() {
         }
 
         $.post("/login", loginInfo, function() {
+            console.log("hello")
+
         });
     }
 

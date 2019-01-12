@@ -8,9 +8,9 @@ var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 var session = require('express-session');
 var passport = require('passport');
+var flash = require('connect-flash');
+
 var app = express();
-
-
 
 
 // Static directory
@@ -46,6 +46,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Connect flash
+app.use(flash());
 
 // Routes
 // =============================================================

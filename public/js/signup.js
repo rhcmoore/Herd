@@ -1,9 +1,6 @@
 $(document).ready(function() {
-    
-    $(signup).on("submit", signup);
+    $("#signup").on("submit", signup);
 
-
-    //to-do: comment this code
     function signup(event){
         event.preventDefault();
 
@@ -13,12 +10,10 @@ $(document).ready(function() {
         if (!name || !username || !password) {
             return;
          }
-         console.log(password);
-        var newUser ={
+         var newUser ={
             username: username,
             password: password,
-            name: name
-
+            name: name 
         }
 
         $.post("/api/signup", newUser, function() {
