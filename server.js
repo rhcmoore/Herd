@@ -7,6 +7,7 @@ var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 var app = express();
+var passport = require('passport');
 
 // Static directory
 app.use(express.static(path.join(__dirname, 'public')));

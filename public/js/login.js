@@ -1,26 +1,24 @@
 $(document).ready(function() {
     
-    $(newCommunityForm).on("submit",postCommunity);
+    $(loginform).on("submit",login);
 
 
     //to-do: comment this code
-    function postCommunity(event){
+    function login(event){
         event.preventDefault();
         var name = $("#name").val().trim();
-        var description = $("#description").val();;
-        console.log(name);
-        console.log(description);
-        if (!name || !description) {
+        var password = $("#password").val();;
+        if (!name || !password) {
             return;
          }
 
-        var newCommunity ={
+        var loginInfo ={
             name: name,
-            description: description
+            password: password
         }
 
-        $.post("/api/community/new", newCommunity, function() {
-            window.location.href = "/"+ name;
+        $.post("/login", loginInfo, function() {
+            window.location.href = "/";
           });
     }
 

@@ -24,6 +24,7 @@
     "express-handlebars": "^3.0.0",
     "handlebars.moment": "^1.0.4",
     "mysql2": "^1.6.4",
+    "passport": "^0.4.0",
     "sequelize": "^4.42.0"
   }
 }
