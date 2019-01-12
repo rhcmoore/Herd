@@ -11,11 +11,11 @@
     <div class="row" id="events-row">
         <div class="container">
             <h2 class="row-title">Top Events</h2> 
-            <div class="row" >
+            <div class="row">
                     {{#each communities}}
                     {{#each Events}}
                         <div class="col col-lg-4">
-                            <div class="card">
+                            <div class="card h-100">
                                 {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                                 <div class="color-spacer event-spacer"></div>
                                 <div class="card-body">
@@ -37,10 +37,10 @@
             <div class="row">
                 <h2 class="row-title">Popular Communities <a href="/api/community/community/new">(+ Add)</a></h2>
             </div>
-            <div class="row" >
+            <div class="row">
                 {{#each communities}}
                     <div class="col col-lg-4">
-                        <div class="card">
+                        <div class="card h-100">
                             {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                             <div class="color-spacer community-spacer"></div>
                             <div class="card-body">

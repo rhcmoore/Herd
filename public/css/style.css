@@ -68,7 +68,9 @@ h2 {
     font-family: 'Archivo Black', serif;
     font-size: 28px;
 }
-
+.col {
+    padding-bottom: 20px;
+}
 .card-title {
     font-weight: 600;
     color: #FF5252;
@@ -88,7 +90,6 @@ h2 {
     padding: 10px;
     position: relative;
     white-space: normal;
-    margin-bottom: 20px;
 }
 
 .card p {
