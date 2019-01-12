@@ -32,14 +32,18 @@ $(document).ready(function() {
     }
 
     var date = new Date();
-    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var tomorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
     
     $.datetimepicker.setLocale('en');
     
     $("#date").datetimepicker({
+    minDate : tomorrow,
     dayOfWeekStart : 1,
     lang: 'en',
-    value: today + "0:00",
+    value: tomorrow,
     step: 30
     });
+
+    $('#datetimepicker').datepicker('setDate', tomorrow);
+
 });
