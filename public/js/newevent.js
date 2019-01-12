@@ -37,7 +37,6 @@ $(document).ready(function() {
     $.datetimepicker.setLocale('en');
     
     $("#date").datetimepicker({
-    startDate: tomorrow,
     minDate : tomorrow,
     dayOfWeekStart : 1,
     lang: 'en',
