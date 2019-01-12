@@ -6,9 +6,12 @@ var PORT = process.env.PORT || 8080;
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
-
-var app = express();
+var session = require('express-session');
 var passport = require('passport');
+var app = express();
+
+
+
 
 // Static directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,8 +25,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main", helpers: require('handlebars-helpers') }));
 
+//view engine
+app.engine("handlebars", exphbs({ defaultLayout: "main", helpers: require('handlebars-helpers') }));
 app.set("view engine", "handlebars");
 
 Handlebars.registerHelper("dot", function(str) {
@@ -32,16 +36,28 @@ Handlebars.registerHelper("dot", function(str) {
   return str;
 });
 
+app.use(session({
+  secret: 'secret',
+  saveUninitialized:true,
+  resave: true
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Routes
 // =============================================================
 require("./controllers/herd_controllers.js")(app);
+require("./controllers/userAuth.js")(app);
+
 
 // Requiring our models for syncing
 var db = require("./models");
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-
 db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
       console.log(`App listening on PORT ${PORT} -- http://localhost:${PORT}/`);

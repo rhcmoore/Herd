@@ -6,20 +6,19 @@ $(document).ready(function() {
     //to-do: comment this code
     function login(event){
         event.preventDefault();
-        var name = $("#name").val().trim();
+        var username = $("#username").val().trim();
         var password = $("#password").val();;
         if (!name || !password) {
             return;
-         }
+        }
 
         var loginInfo ={
-            name: name,
+            username: username,
             password: password
         }
 
         $.post("/login", loginInfo, function() {
-            window.location.href = "/";
-          });
+        });
     }
 
 });
