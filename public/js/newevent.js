@@ -32,6 +32,7 @@ $(document).ready(function() {
     }
 
     var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     var tomorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
     
     $.datetimepicker.setLocale('en');
@@ -40,10 +41,8 @@ $(document).ready(function() {
     minDate : tomorrow,
     dayOfWeekStart : 1,
     lang: 'en',
-    value: tomorrow,
+    value: today,
     step: 30
     });
-
-    $('#datetimepicker').datepicker('setDate', tomorrow);
 
 });

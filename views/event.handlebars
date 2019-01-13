@@ -56,10 +56,16 @@
                         <form id="newEventAttendee" class="needs-validation" data-id="{{id}}"novalidate>
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input placeholder="Rick James" type="text" class="form-control" id="name" required>
+                                <input placeholder="Rick James" type="text" class="form-control" id="name" pattern="[A-Za-z]{2,30}" required>
+                                <div class="invalid-feedback">
+                                Invalid name.
+                                </div>
                                 <br>
                                 <label for="description">Phone:</label>
-                                <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description" required></textarea>
+                                <input placeholder="888-888-8888" class="form-control" rows="4" id="description" pattern="^\d{3}-\d{3}-\d{4}$" required></textarea>
+                                <div class="invalid-feedback">
+                                Invalid phone number.
+                                </div>
                                 <br>
                                 <button type="submit" class="btn btn-success submit">I'm Coming Too!</button>
                             </div>

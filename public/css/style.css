@@ -163,3 +163,7 @@ h2 {
     color: coral;
     font-weight: 500;
 }
+
+::placeholder {
+    color: lightgrey;
+}

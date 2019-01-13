@@ -11,13 +11,22 @@
          
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input placeholder="Username" type="text" class="form-control" id="username" required>
+                    <input placeholder="Username" type="text" class="form-control" id="username" pattern="[A-Za-z0-9@]{6,20}" required>
+                    <div class="invalid-feedback">
+                    Please provide a username with a combination of 6 to 20 letters and numbers.
+                    </div>
                     <br />
                     <label for="password">Password:</label>
-                    <input placeholder="Password" type="password" class="form-control" id="password" required>
+                    <input placeholder="Password" type="password" class="form-control" id="password" pattern="[A-Za-z0-9]{6,12}" required>
+                    <div class="invalid-feedback">
+                    Please provide a password with a combination of 6 to 12 letters and numbers.
+                    </div>
                     <br />
                     <label for="name">Name:</label>
-                     <input placeholder="Name" type="text" class="form-control" id="name" required>
+                     <input placeholder="Name" type="text" class="form-control" id="name" pattern="[A-Za-z]{2,30}" required>
+                    <div class="invalid-feedback">
+                    Invalid name.
+                    </div>
                     <br />
                     <button type="submit" class="btn btn-success submit">Sign up</button>
                 </div>
