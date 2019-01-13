@@ -17,6 +17,16 @@ module.exports = function(app) {
         });
     }); 
 
+    app.get("/dashboard", function(req, res){
+        if(req.user){
+            console.log(req.user);
+            res.render("dashboard");
+        }
+        else{
+            res.redirect("/login");
+        }
+    });
+
     //login page
 
     app.get("/login", function(req, res){
