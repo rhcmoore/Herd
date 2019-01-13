@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         if (!name || !date  || !description || !max_attendees) {
             return;
-         }
+        }
 
         var newEvent ={
             name: name,
@@ -43,6 +43,13 @@ $(document).ready(function() {
     lang: 'en',
     value: today,
     step: 30
+    });
+
+    $(".submit").on("click", function(){
+    var current = new Date(Date.parse($("#date").val()));
+        if (current < today) {
+        $("#date").removeClass("form-control").addClass("invalid").after('<div class="invalid-feedback show">Date cannot be in the past.</div>');
+        }
     });
 
 });
