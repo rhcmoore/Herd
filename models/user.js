@@ -1,4 +1,3 @@
-// THIS MODEL IS NOT YET BEING USED
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
@@ -14,5 +13,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
     );
+
+    User.prototype.validPassword = function(password) {
+        return ( this.password === password );
+    }
+
     return User; 
 };
