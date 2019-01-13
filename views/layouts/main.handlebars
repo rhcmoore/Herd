@@ -18,7 +18,7 @@
 
 <body>
 	{{!-- navbar --}}
-	{{#if loggedin}}
+	{{#if user}}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid rgba(46,62,72,.12)">
 		<a class="navbar-brand" href="/"><img src="/img/HERD.png" style="height:40px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
 		</div>
 	</nav>
  	{{/if}}
-	{{#unless loggedin}}
+	{{#unless user}}
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid rgba(46,62,72,.12)">
 		<a class="navbar-brand" href="/"><img src="/img/HERD.png" style="height:40px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
