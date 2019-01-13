@@ -13,13 +13,19 @@
 
                 <div class="form-group">
                     <label for="name">Event Name:</label>
-                    <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name" required>
+                    <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name" pattern="[A-Za-z0-9]{1,100}" required>
+                    <div class="invalid-feedback">
+                    Please provide a name with the limit of 100 characters.
+                    </div>
                     <br />
                     <label for="date">Date:</label>
                     <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" required>
                     <br />
                     <label for="description">Event Description:</label>
-                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" required></textarea>
+                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" pattern="[A-Za-z0-9]{6,400}" required></textarea>
+                    <div class="invalid-feedback">
+                    Please provide a description with the limit of 400 characters.
+                    </div>
                     <br />
                     <label for="max-attendees">Max Attendees:</label>
                     <input placeholder="30" type="number" class="form-control" id="max-attendees" required>
