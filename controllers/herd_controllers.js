@@ -23,7 +23,6 @@ module.exports = function(app) {
         res.render("login");
     });
 
-
     //create new user page
 
     app.get("/signup", function(req, res){
