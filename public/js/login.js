@@ -18,9 +18,8 @@ $(document).ready(function() {
             password: password
         }
 
-        $.post("/login", loginInfo, function() {
-            console.log("hello")
-
+        $.post("/login", loginInfo, function(result) {
+            window.location.href = result ;
         });
     }
 
