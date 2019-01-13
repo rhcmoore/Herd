@@ -1,12 +1,20 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
-var bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
+var path = require("path");
 var PORT = process.env.PORT || 8080;
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
+var session = require('express-session');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var app = express();
 
+
 // Static directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -17,20 +25,51 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+
+//view engine
+app.engine("handlebars", exphbs({ defaultLayout: "main", helpers: require('handlebars-helpers') }));
 app.set("view engine", "handlebars");
+
+Handlebars.registerHelper("dot", function(str) {
+  if (str.length > 60)
+    return str.substring(0,60) + '...';
+  return str;
+});
+
+app.use(session({
+  secret: 'secret',
+  saveUninitialized:true,
+  resave: true
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
 
 // Routes
 // =============================================================
 require("./controllers/herd_controllers.js")(app);
+require("./controllers/userAuth.js")(app);
+
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
+
 
 // Requiring our models for syncing
 var db = require("./models");
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
       console.log(`App listening on PORT ${PORT} -- http://localhost:${PORT}/`);
     });

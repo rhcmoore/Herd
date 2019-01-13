@@ -1,0 +1,30 @@
+
+<div class="jumbotron jumbotron-fluid" style="background-image:url(https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1915&q=80); background-position: 60% bottom; background-repeat: no-repeat; background-size: cover; min-height:400px">
+  <div class="container">
+   
+  </div>
+</div>
+
+<div class="container">
+    <h2 class="row-title">{{Community}} Events <span><a href="/api/community/{{Community}}/event/new?communityId={{communityId}}">(+ Add)</a></span></h2>
+    <div class="row">
+        {{#each Events}}
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                    <div class="color-spacer event-spacer"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{description}}</p>
+                        {{!-- <p class="card-text">{{date}}</p> --}}
+
+                        <p class="card-text">{{moment date "dddd, MMMM Do YYYY"}}</p>
+                        <p class="card-text">{{moment date "h:mm A"}}</p>
+
+                        <div id="visit-event"><a href="/community/{{../Community}}/event/{{name}}?eventId={{id}}" class="btn btn-primary">View Event</a></div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

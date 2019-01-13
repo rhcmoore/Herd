@@ -1,0 +1,32 @@
+<script src="/js/newcommunity.js" type="text/javascript"></script>
+
+<div class="container">
+    {{!-- <div class="row">
+        <div class="col-md-2 col-sm-2">
+            <a class="btn btn-default" href="/blog">Go to Blog</a>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <a class="btn btn-default" href="/authors">Manage Authors</a>
+        </div>
+    </div> --}}
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-md-6 col-md-offset-3 align-center">
+            <div class="card event-content">
+            <h3>Create a New Community</h3>
+            <form id="newCommunityForm" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="name">Community Name:</label>
+                    <input placeholder="San Francisco Developers" type="text" class="form-control" id="name" required>
+                    <br />
+                    <label for="description">Description:</label>
+                    <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description" required></textarea>
+                    <br />
+                    <button type="submit" class="btn btn-success submit">Submit</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

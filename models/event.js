@@ -23,7 +23,10 @@ module.exports = function(sequelize, DataTypes) {
         foreignKey:{
           allowNull: false
         }
-      })
+      }),
+      Event.hasMany(models.Attendee, {
+        onDelete: "cascade"
+      });
     }
  
     return Event; 

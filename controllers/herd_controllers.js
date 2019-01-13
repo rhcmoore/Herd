@@ -16,30 +16,69 @@ module.exports = function(app) {
             res.render("index", hbsObject);
         });
     }); 
+
+    //login page
+
+    app.get("/login", function(req, res){
+        res.render("login");
+    });
+
+    //create new user page
+
+    app.get("/signup", function(req, res){
+        res.render("signup");
+    })
+
     //community page
-    app.get("/:community", function(req,res){
-        var communityId = req.query.community_id;
+    app.get("/community/:community", function(req,res){
+        var communityId = req.query.communityId;
+        console.log(communityId);
         db.Event.findAll({
-            include: [{
-                where: {communityId: communityId}
-            }]
+            where: {communityId: communityId}
         }).then(function(data) {
             var hbsObject = {
-                Events: data
+                Events: data,
+                Community: req.params.community,
+                communityId: communityId
             };
             res.render("community", hbsObject);
         });
     }); 
     //event page
-    app.get("/:community/:event", function(req,res){
+    app.get("/community/:community/event/:event", function(req,res){
         var eventId = req.query.eventId;
-        db.Event.findAll().then(function(data) {
+        db.Event.findAll({
+            where: {id: eventId},
+            include: [{
+                model: db.Attendee
+            }]
+        }).then(function(data) {
             var hbsObject = {
-                Events: data
+                Event: data
             };
             res.render("event", hbsObject);
         });
     }); 
+
+    //create new community page
+    app.get("/api/community/:community/new", function (req,res){
+        res.render("newcommunity");
+    });
+
+    //create new event page
+    app.get("/api/community/:community/event/new", function (req,res){
+
+        db.Community.findOne({
+            where:{
+                name: req.params.community
+            }
+        }).then(function(result){
+            var hbsObject = {
+                community:result
+            }
+            res.render("newevent", hbsObject);
+        })
+    });
 
     //create new community
     app.post("/api/community/new", function(req, res) {
@@ -52,21 +91,45 @@ module.exports = function(app) {
     });
 
     //create new event
-    app.post("/api/:community/event/new", function(req, res) {
-        var communityId = req.query.communityId;
+    app.post("/api/community/:community/event/new", function(req, res) {
+       console.log("community id: " + req.body.communityId);
         db.Event.create({
             name: req.body.name,
             date: req.body.date,
-            description: req.body.body,
+            description: req.body.description,
             max_attendees: req.body.max_attendees,
-            communityId: communityId
+            CommunityId: req.body.communityId
+        }).then(function(result){
+            res.json(result);
+        })
+    });
+
+    //create new user
+    app.post("/api/signup", function(req, res){
+        db.User.create({
+            username: req.body.username,
+            password: req.body.password,
+            name: req.body.name
+        }).then(function(result){
+            res.json(result);
+        })
+
+    });
+
+    //new event attendee
+    app.post("/api/attendee", function(req, res){
+        console.log(req.body.eventId)
+        db.Attendee.create({
+            name: req.body.name,
+            description: req.body.description,
+            EventId: req.body.eventId
         }).then(function(result){
             res.json(result);
         })
     });
 
     //update community
-    app.put("/api/:community/:id", function(req, res) {
+    app.put("/api/community/:community/:id", function(req, res) {
         var communityId = req.params.id;
         db.Community.update({
             name: req.body.name,
@@ -79,8 +142,8 @@ module.exports = function(app) {
 
     });
 
-    //upodate event
-    app.put("/api/:community/:event/:id", function(req, res) {
+    //update event
+    app.put("/api/community/:community/event/:event/:id", function(req, res) {
         var eventId = req.params.req.params.id;
         db.Event.update({
             name: req.body.name,
@@ -97,24 +160,26 @@ module.exports = function(app) {
     });
 
     //delete community
-    app.delete("/api/:community/:id", function(req, res) {
+    app.delete("/api/community/:community/:id", function(req, res) {
         db.Community.destroy({
             where: {
               id: req.params.id
             }
-          }).then(function(dbPost) {
-            res.json(dbPost);
+          }).then(function(result) {
+            res.json(result);
           });
     });
 
     //delete event
-    app.delete("/api/:community/:event/:id", function(req, res) {
+    app.delete("/api/community/:community/event/:event/:id", function(req, res) {
         db.Event.destroy({
             where: {
               id: req.params.id
             }
-        }).then(function(dbPost) {
-        res.json(dbPost);
+        }).then(function(result) {
+        res.json(result);
         });
     });
+
+
 };

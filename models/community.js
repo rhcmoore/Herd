@@ -12,10 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     });
     
     Community.associate = function(models){
-      // Community.belongsToMany(models.Event, {
-      //   through: {model: models.communityEvent},
-      //   foreignKey:'owner'
-      // });
+    
       Community.hasMany(models.Event, {
         onDelete: "cascade"
       });

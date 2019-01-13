@@ -1,47 +1,58 @@
-{{!-- jumbotron for home page --}}
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div>
-
-{{!-- search bar here --}}
-
-
-
-
-
-{{!-- render events here --}}
-<h3>Popular Events</h3>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div>
-            {{#each communities}}
-            {{#each Events}}
-                <div>Event name: {{name}}</div>
-                <div>Event description: {{description}}</div>
-                <div>Event time: {{time}}</div>
-            {{/each}}
-            {{/each}}
-
+        <header>
+            <img class="logo" src="../img/HERD.png">
+            <br>
+            <div><h2 class="lead" id="lead-main"> Join the event</h2> </div>
+            <div><h2 class="lead" id="lead-sub">Create your community</h2> </div>
+            <div id="sign-up"><a href="/signup" class="btn btn-primary">Sign Up</a></div>
+        </header>
+    </div>
+    <div class="row" id="events-row">
+        <div class="container">
+            <h2 class="row-title">Top Events</h2> 
+            <div class="row">
+                    {{#each communities}}
+                    {{#each Events}}
+                        <div class="col col-lg-4">
+                            <div class="card h-100">
+                                {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                                <div class="color-spacer event-spacer"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text">{{dot description}}</p>
+                                    <p class="card-text">{{moment date "dddd, MMMM Do YYYY"}}</p>
+                                    <p class="card-text">{{moment date "h:mm A"}}</p>
+                                    <div id="visit-event"><a href="/community/{{../name}}/event/{{name}}?eventId={{id}}" class="btn btn-primary">View Event</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="row" id="communities-row">
+        <div class="container">
+            <div class="row">
+                <h2 class="row-title">Popular Communities <a href="/api/community/community/new">(+ Add)</a></h2>
+            </div>
+            <div class="row">
+                {{#each communities}}
+                    <div class="col col-lg-4">
+                        <div class="card h-100">
+                            {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                            <div class="color-spacer community-spacer"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{name}}</h5>
+                                <p class="card-text">{{dot description}}</p>
+                                <div id="visit-community"><a href="/community/{{name}}?communityId={{id}}" class="btn btn-primary">Visit</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>
 
-
-
-{{!-- render communities here --}}
-<h3>Popular Communities</h3>
-
-<div class="container">
-    <div class="row">
-        <div>
-            {{#each communities}}
-                <div>Commnunity name: {{name}}</div>
-                <div>Community description: {{description}}</div>
-
-            {{/each}}
-        </div>
-    </div>
-</div>
