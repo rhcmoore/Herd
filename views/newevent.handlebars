@@ -19,7 +19,7 @@
                     </div>
                     <br />
                     <label for="date">Date:</label>
-                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" required>
+                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" pattern="([1-9]\d{3}\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])[\ ]([01]?[0-9]|2[0-3]):[0-5][0-9])" required>
                     <br />
                     <label for="description">Event Description:</label>
                     <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" pattern="[A-Za-z0-9]{6,400}" required></textarea>
