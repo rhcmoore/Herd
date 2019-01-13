@@ -50,6 +50,6 @@ $(document).ready(function() {
         if (current < today) {
         $("#date").removeClass("form-control").addClass("invalid").after('<div class="invalid-feedback show">Date cannot be in the past.</div>');
         }
-    })
+    });
 
 });
