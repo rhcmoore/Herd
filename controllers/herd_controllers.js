@@ -13,6 +13,8 @@ module.exports = function(app) {
             var hbsObject = {
                 communities: data
             };
+            console.log(req.user);
+
             res.render("index", hbsObject);
         });
     }); 
