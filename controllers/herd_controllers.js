@@ -18,8 +18,13 @@ module.exports = function(app) {
     }); 
 
     app.get("/dashboard", function(req, res){
-        if(req.user){res.render("dashboard")}
-        else{res.redirect("/login");}
+        if(req.user){
+            console.log(req.user);
+            res.render("dashboard");
+        }
+        else{
+            res.redirect("/login");
+        }
     });
 
     //login page
