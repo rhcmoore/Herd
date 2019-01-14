@@ -1,10 +1,10 @@
 $(document).ready(function() {
     
-    $(newEventAttendee).on("submit", attendEvent);
-
+    $("#newEventAttendee").on("submit", attendGuest);
+    $("#userAttendee").on("click", attendUser)
 
     //to-do: comment this code
-    function attendEvent(event){
+    function attendGuest(event){
         event.preventDefault();
 
         var name = $("#name").val().trim();        
@@ -23,5 +23,19 @@ $(document).ready(function() {
             //reload to page you guys want here
             location.reload();
         });
+    }
+
+    function attendUser(event){
+        event.preventDefault();
+       
+        var newAttendee ={
+            userId: $("#userAttendee").data("userid"),
+            eventId: $("#userAttendee").data("eventid")
+        }
+     
+        $.post("/api/userEvent", newAttendee, function() {
+            //reload to page you guys want here
+            location.reload();
+        })
     }
 });

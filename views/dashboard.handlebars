@@ -1,24 +1,15 @@
-<div class="container-fluid">
-    <div class="row">
-        <header>
-            <img class="logo" src="../img/HERD.png">
-            <br>
-            <div><h2 class="lead" id="lead-main"> Join the event</h2> </div>
-            <div><h2 class="lead" id="lead-sub">Create your community</h2> </div>
-            {{#unless user}}
-            <div id="sign-up"><a href="/signup" class="btn btn-primary">Sign Up</a></div>
-            {{/unless}}
-        </header>
-    </div>
-    <div class="row" id="events-row">
+<div class="container">
+<h1> DASH BOARD</h1>
+<h2 class="row-title">My Events</h2> 
+   <div class="row" id="events-row">
         <div class="container">
-            <h2 class="row-title">Top Events</h2> 
             <div class="row">
-                    {{#each communities}}
+                    {{#each user}}
                     {{#each Events}}
                         <div class="col-lg-4 col-xs-12">
                             <div class="card h-100">
-                                <img class="card-img-top" src="{{image}}" alt="Card image cap">
+                                {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                                <div class="color-spacer event-spacer"></div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{name}}</h5>
                                     <p class="card-text">{{dot description}}</p>
@@ -34,17 +25,18 @@
             </div>
         </div>
     </div>
+
+<h2 class="row-title">My Communities</a></h2>
+
     <div class="row" id="communities-row">
         <div class="container">
-            <div class="row">
-                <h2 class="row-title">Popular Communities <a href="/api/community/community/new">(+ Add)</a></h2>
-            </div>
+         
             <div class="row">
                 {{#each communities}}
                     <div class="col-lg-4 col-xs-12">
                         <div class="card h-100">
-                            <img class="card-img-top" src="{{image}}" alt="Card image cap">
-                            {{!-- <div class="color-spacer community-spacer"></div> --}}
+                            {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                            <div class="color-spacer community-spacer"></div>
                             <div class="card-body">
                                 <h5 class="card-title">{{name}}</h5>
                                 <p class="card-text">{{dot description}}</p>
@@ -57,4 +49,3 @@
         </div>
     </div>
 </div>
-

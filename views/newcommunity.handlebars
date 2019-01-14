@@ -17,10 +17,19 @@
             <form id="newCommunityForm" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="name">Community Name:</label>
-                    <input placeholder="San Francisco Developers" type="text" class="form-control" id="name" required>
+                    <input placeholder="San Francisco Developers" type="text" class="form-control" id="name" {1,100} required>
+                    <div class="invalid-feedback">
+                    Please provide a name with the limit of 100 characters.
+                    </div>
                     <br />
                     <label for="description">Description:</label>
-                    <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description" required></textarea>
+                    <textarea placeholder="Organizing events for developers in the Bay Area" class="form-control" rows="4" id="description" pattern="[A-Za-z0-9]{100,400}" required></textarea>
+                    <div class="invalid-feedback">
+                    Please provide a description with 100 to 400 characters.
+                    </div>
+                    <br />
+                    <label for="image">Community Image:</label>
+                    <input placeholder="" type="text" class="form-control" id="image">
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>

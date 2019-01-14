@@ -1,4 +1,5 @@
 var db = require("../models");
+var moment = require('moment');
 
 module.exports = function(app) {
 
@@ -13,9 +14,33 @@ module.exports = function(app) {
             var hbsObject = {
                 communities: data
             };
+            console.log(req.user);
+
             res.render("index", hbsObject);
         });
     }); 
+
+    app.get("/dashboard", function(req, res){
+        if(req.user){
+            db.User.findAll({
+                include: [{
+                    model: db.Event,
+                    // model: db.Community
+                }]
+            }).then(function(data) {
+                var hbsObject = {
+                    user: data
+                };
+                console.log(req.user);
+                res.render("dashboard", hbsObject);
+            });
+
+
+        }
+        else{
+            res.redirect("/login");
+        }
+    });
 
     //login page
 
@@ -51,8 +76,10 @@ module.exports = function(app) {
             where: {id: eventId},
             include: [{
                 model: db.Attendee
-            }]
-        }).then(function(data) {
+            },{
+                model: db.User
+            },
+        ]}).then(function(data) {
             var hbsObject = {
                 Event: data
             };
@@ -84,7 +111,8 @@ module.exports = function(app) {
     app.post("/api/community/new", function(req, res) {
         db.Community.create({
             name: req.body.name,
-            description: req.body.description
+            description: req.body.description,
+            image: req.body.image
         }).then(function(result){
             res.json(result);
         })
@@ -97,8 +125,10 @@ module.exports = function(app) {
             name: req.body.name,
             date: req.body.date,
             description: req.body.description,
+            location: req.body.location,
             max_attendees: req.body.max_attendees,
-            CommunityId: req.body.communityId
+            CommunityId: req.body.communityId,
+            image: req.body.image
         }).then(function(result){
             res.json(result);
         })
@@ -116,12 +146,25 @@ module.exports = function(app) {
 
     });
 
+    //creates the link for user and event
+    app.post("/api/userEvent", function(req,res){
+        db.UserEvent.create({
+            UserId:req.body.userId,
+            EventId:req.body.eventId
+        }).then(function(result){
+            res.json(result);
+        }).catch(function (err) {
+            res.json("You have already joined this event. ")
+        });
+    });
+
     //new event attendee
     app.post("/api/attendee", function(req, res){
         console.log(req.body.eventId)
         db.Attendee.create({
             name: req.body.name,
             description: req.body.description,
+            location: req.body.location,
             EventId: req.body.eventId
         }).then(function(result){
             res.json(result);
@@ -149,6 +192,7 @@ module.exports = function(app) {
             name: req.body.name,
             date: req.body.date,
             description: req.body.body,
+            location: req.body.location,
             max_attendees: req.body.max_attendees,
             communityId: communityId
         }),{
@@ -181,5 +225,83 @@ module.exports = function(app) {
         });
     });
 
+    // API communities route
+    app.get("/api/communities", function(req,res) {
+        // ex: /api/communities?APIkey=54321&name=UCB&description=Bootcamp
+        
+        // Grab query terms
+        var APIkey = req.query.APIkey;
+        var communityName = req.query.name;
+        var communityDesc = req.query.description;
+        if (!communityName) communityName = "";
+        if (!communityDesc) communityDesc = "";
+
+        // if no API key, exit
+        if (!APIkey) {
+            // send to page "Please enter an API key"
+            res.redirect("/");
+        } else {
+            db.Community.findAll({
+                where:{
+                    name: { $like: `%${communityName}%` },
+                    description: { $like: `%${communityDesc}%` }
+                }
+            }).then(function(data) {
+                res.json(data);
+            });
+        }
+    });
+
+    // API events route
+    app.get("/api/events", function(req,res) {
+        // ex: /api/events?APIkey=54321&name=UCB&description=Bootcamp&date=2019-08-04
+        
+        // Grab query terms
+        var APIkey = req.query.APIkey;
+        var eventName = req.query.name;
+        var eventDesc = req.query.description;
+        var eventDate = req.query.date;
+        var nextDay;
+        if (!eventName) eventName = "";
+        if (!eventDesc) eventDesc = "";
+        if (eventDate) {
+            eventDate = moment(eventDate).format("YYYY-MM-DD");
+            nextDay = moment(eventDate).add(1,'days').format("YYYY-MM-DD");
+        }
+        
+        // if no API key, exit
+        if (!APIkey) {
+            // "Please enter an API key"
+            res.redirect("/");
+        } else if (!eventDate) {
+            // Search all
+            db.Event.findAll({
+                where:{
+                    name: { $like: `%${eventName}%` },
+                    description: { $like: `%${eventDesc}%` }
+                }
+            }).then(function(data) {
+                res.json(data);
+            });
+        } else {
+            db.Event.findAll({
+                where:{
+                    name: { $like: `%${eventName}%` },
+                    description: { $like: `%${eventDesc}%` },
+                    date: {
+                        $gt: eventDate,
+                        $lt: nextDay
+                    }
+                }
+            }).then(function(data) {
+                res.json(data);
+            });
+        }
+    });
+
+    // API docs page
+    app.get("/api", function(req, res){
+        res.render("api");
+    });
 
 };

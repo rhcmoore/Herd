@@ -8,10 +8,8 @@ var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 var session = require('express-session');
 var passport = require('passport');
-var flash = require('connect-flash');
 
 var app = express();
-
 
 // Static directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,22 +44,18 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect flash
-app.use(flash());
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+});
 
 // Routes
 // =============================================================
 require("./controllers/herd_controllers.js")(app);
 require("./controllers/userAuth.js")(app);
 
-// Global variables
-app.use(function(req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
+
 
 
 // Requiring our models for syncing

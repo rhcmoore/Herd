@@ -14,6 +14,12 @@ module.exports = function(sequelize, DataTypes) {
     }
     );
 
+    User.associate = (models) =>{
+      User.belongsToMany(models.Event, {
+        through: {model: models.UserEvent}
+      })
+    }
+
     User.prototype.validPassword = function(password) {
         return ( this.password === password );
     }

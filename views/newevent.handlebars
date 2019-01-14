@@ -1,4 +1,5 @@
-	<script src="/js/newevent.js" type="text/javascript"></script>
+<script src="/js/newevent.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgAWPuwUw7EMTiZhCSzc0GZxD8FBD2Om4&libraries=places&callback=initAutocomplete" async defer></script>
 
 <div class="container">
 
@@ -13,16 +14,28 @@
 
                 <div class="form-group">
                     <label for="name">Event Name:</label>
-                    <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name" required>
+                    <input placeholder="Movie Night & Potluck" type="text" class="form-control" id="name" pattern="[A-Za-z0-9]{1,100}" required>
+                    <div class="invalid-feedback">
+                    Please provide a name with the limit of 100 characters.
+                    </div>
                     <br />
                     <label for="date">Date:</label>
-                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" required>
+                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" pattern="\d{4}/\d{2}/\d{2}\s+\d{2}:\d{2}" required>
                     <br />
                     <label for="description">Event Description:</label>
-                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" required></textarea>
+                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" pattern="[A-Za-z0-9]{6,400}" required></textarea>
+                    <div class="invalid-feedback">
+                    Please provide a description with the limit of 400 characters.
+                    </div>
+                    <br />
+                    <label for="location">Event Location:</label>
+                    <input placeholder="San Francisco" type="text" class="form-control" id="location" required>
                     <br />
                     <label for="max-attendees">Max Attendees:</label>
                     <input placeholder="30" type="number" class="form-control" id="max-attendees" required>
+                    <br />
+                    <label for="image">Event Image:</label>
+                    <input placeholder="image link here" type="text" class="form-control" id="image" >
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>
@@ -31,4 +44,3 @@
         </div>
         <div class="col-lg-3"></div>
     </div>
-</div>
