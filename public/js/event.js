@@ -27,7 +27,6 @@ $(document).ready(function() {
 
     function attendUser(event){
         event.preventDefault();
-
        
         var newAttendee ={
             userId: $("#userAttendee").data("userid"),
@@ -37,6 +36,6 @@ $(document).ready(function() {
         $.post("/api/userEvent", newAttendee, function() {
             //reload to page you guys want here
             location.reload();
-        });
+        })
     }
 });

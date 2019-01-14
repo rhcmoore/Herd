@@ -13,18 +13,21 @@ $(document).ready(function() {
         var max_attendees = $("#max-attendees").val().trim();
         var communityId = $("#newEventForm").data("id");
         var communityName = $("#newEventForm").data("name");
-
+        var image = $("#image").val().trim();
         if (!name || !date  || !description || !max_attendees) {
             return;
         }
-
+        if (!image){
+            image = "https://eh.bard.edu/wp-content/themes/kingpower-child/images/event-placeholder-list.png"
+        }
         var newEvent ={
             name: name,
             date: date,
             description: description,
             location: location,
             max_attendees: max_attendees,
-            communityId: communityId
+            communityId: communityId,
+            image: image
         }
 
         $.post("/api/community/:community/event/new", newEvent, function(data) {
