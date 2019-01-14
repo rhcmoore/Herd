@@ -1,3 +1,4 @@
+<script src="/js/community.js" type="text/javascript"></script>
 
 <div class="jumbotron jumbotron-fluid" style="background-image:url(https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1915&q=80); background-position: 60% bottom; background-repeat: no-repeat; background-size: cover; min-height:400px">
   <div class="container">
@@ -6,9 +7,17 @@
 </div>
 
 <div class="container">
-    <h2 class="row-title">{{Community}} Events <span><a href="/api/community/{{Community}}/event/new?communityId={{communityId}}">(+ Add)</a></span></h2>
+      {{#if user}}
+            {{#unless userJoined}}
+            <button id="joinComm" type="button" class="btn btn-success" data-commId="{{Community.id}}" data-userId="{{user.id}}">Join Community!</button>
+            {{/unless}}
+            {{#if userJoined}}
+            <button id="leaveComm" type="button" class="btn btn-danger" data-commId="{{Community.id}}" data-userId="{{user.id}}">Leave Community</button>
+            {{/if}}
+        {{/if}}
+    <h2 class="row-title">{{Community.name}} Events <span><a href="/api/community/{{Community.name}}/event/new?communityId={{communityId}}">(+ Add)</a></span></h2>
     <div class="row">
-        {{#each Events}}
+        {{#each Community.Events}}
             <div class="col-lg-4">
                 <div class="card h-100">
                     {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}

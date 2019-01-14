@@ -30,6 +30,7 @@ module.exports = function(app) {
                 var hbsObject = {
                     user: data
                 };
+                console.log(data)
                 res.render("dashboard", hbsObject);
             });
 
@@ -56,13 +57,29 @@ module.exports = function(app) {
     app.get("/community/:community", function(req,res){
         var communityId = req.query.communityId;
         console.log(communityId);
-        db.Event.findAll({
-            where: {communityId: communityId}
+        var userJoined = false;
+        if(req.user){
+            var userId = req.user.id;
+            db.UserCommunity.findOne({
+                where: {userId: userId,
+                    communityId: communityId
+                }    
+            }).then(function(data){
+                console.log(data)
+                if (data){userJoined = true};
+            })
+        };
+        db.Community.findOne({
+            where: {id: communityId},
+            include: [{
+                model: db.Event,
+                // model: db.Community
+            }]
         }).then(function(data) {
             var hbsObject = {
-                Events: data,
-                Community: req.params.community,
-                communityId: communityId
+                Community: data,
+                communityId: communityId,
+                userJoined: userJoined
             };
             res.render("community", hbsObject);
         });
@@ -73,7 +90,7 @@ module.exports = function(app) {
         var userAttending = false;
         if(req.user){
             var userId = req.user.id;
-            db.UserEvent.findOne({
+            db.UserCommunity.findOne({
                 where: {userId: userId,
                     eventId: eventId
                 }    
@@ -169,6 +186,20 @@ module.exports = function(app) {
         });
     });
 
+     //creates the link for user and community
+     app.post("/api/userCommunity", function(req,res){
+         console.log(req.body.userId)
+         console.log(req.body.communityId)
+        db.UserCommunity.create({
+            UserId:req.body.userId,
+            CommunityId:req.body.communityId
+        }).then(function(result){
+            res.json(result);
+        }).catch(function (err) {
+            res.json("You have already joined this community. ")
+        });
+    });
+
     //new event attendee
     app.post("/api/attendee", function(req, res){
         console.log(req.body.eventId)
@@ -249,7 +280,20 @@ module.exports = function(app) {
           res.json(result);
           });
     });
+   
 
+     //cancel community
+     app.delete("/api/userCommunity", function(req,res){
+        console.log(req.body.userId)
+        db.UserCommunity.destroy({
+            where: {
+                userId: req.body.userId,
+                communityId: req.body.communityId
+            }
+          }).then(function(result) {
+          res.json(result);
+          });
+    });
 
     // API communities route
     app.get("/api/communities", function(req,res) {
