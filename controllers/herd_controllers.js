@@ -268,4 +268,10 @@ module.exports = function(app) {
             });
         }
     });
+
+    // API docs page
+    app.get("/api", function(req, res){
+        res.render("api");
+    });
+
 };

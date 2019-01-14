@@ -1,0 +1,185 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div>
+                <h1>API Documentation</h1>
+
+                <div class="api-section">
+                    <h5 class="api-header">Free usage</h5>
+                    <p>The Herd API is free for non-commercial usage. Your application is probably free if you don't plan
+                        on making any money with it, or if it's open source.</p>
+                </div>
+
+                <hr>
+
+                <div class="api-section">      
+                    <h4 class="api-header">Communities</h4>
+                    <p>The Communities API is accessed by making HTTP requests to a specific version endpoint URL.</p>
+                    <code>http://localhost:8080/api/communities</code>
+                </div>
+                
+                <div class="api-section"> 
+                    <table class="table table-striped api-table">
+                        <thead>
+                            <tr>
+                                <th>Query String Parameter</th>
+                                <th>Required?</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>APIkey</td>
+                                <td>required</td>
+                                <td>Unique string for authentication (any will do)</td>
+                            </tr>
+                            <tr>
+                                <td>name</td>
+                                <td>optional</td>
+                                <td>Search by the name of the community (default: "")</td>
+                            </tr>
+                            <tr>
+                                <td>description</td>
+                                <td>optional</td>
+                                <td>Search by the description of the community (default: "")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="api-section">   
+                    <p>Example query: </p>
+                    <code>http://localhost:8080/api/communities?APIkey=54321&name=UCB&description=members</code>
+                </div> 
+
+                <div class="api-section">    
+                    <h5>Response</h5>
+                    <p>Responses are in JSON.</p>
+                    <p>Example response: </p>
+                    <samp>
+                    [{<br>
+                        id: 1,<br>
+                        name: "UCB",<br>
+                        description: "Coding club members",<br>
+                        createdAt: "2019-01-08T03:14:07.000Z",<br>
+                        updatedAt: "2019-01-08T03:14:07.000Z"<br>
+                        },<br>
+                        {<br>
+                        id: 2,<br>
+                        name: "Stanford",<br>
+                        description: "Tree lovers anonymous",<br>
+                        createdAt: "2019-01-08T03:14:07.000Z",<br>
+                        updatedAt: "2019-01-08T03:14:07.000Z"<br>
+                        },<br>
+                        {<br>
+                        id: 3,<br>
+                        name: "UCSF",<br>
+                        description: "Med students united",<br>
+                        createdAt: "2019-01-08T03:14:07.000Z",<br>
+                        updatedAt: "2019-01-08T03:14:07.000Z"<br>
+                    }]<br>
+                    </samp>
+                </div>  
+                
+                <hr>
+
+                <div class="api-section">   
+                    <h4 class="api-header">Events</h4>
+                    <p>The Events API is accessed by making HTTP requests to a specific version endpoint URL:</p>
+                    <code>http://localhost:8080/api/events</code>
+                </div>  
+
+                <div class="api-section">
+                    <table class="table table-striped api-table">
+                        <thead>
+                            <tr>
+                                <th>Query String Parameter</th>
+                                <th>Required?</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>APIkey</td>
+                                <td>required</td>
+                                <td>Unique string for authentication (any will do)</td>
+                            </tr>
+                            <tr>
+                                <td>name</td>
+                                <td>optional</td>
+                                <td>Search by the name of the event (default: "")</td>
+                            </tr>
+                            <tr>
+                                <td>description</td>
+                                <td>optional</td>
+                                <td>Search by the description of the event (default: "")</td>
+                            </tr>
+                            <tr>
+                                <td>date</td>
+                                <td>optional</td>
+                                <td>Search by the date of the event (format: YYYY-MM-DD)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="api-section">   
+                    <p>Example query:</p>
+                    <code>http://localhost:8080/api/events?APIkey=54321&name=UCB&description=coding&date=2019-08-04</code>
+                </div>  
+
+                <div class="api-section">   
+                    <h5>Response</h5>
+                    <p>Responses are in JSON.</p>
+                    <p>Example response: </p>
+                    <samp>
+                    [{<br>
+                        id: 1,<br>
+                        name: "UCB code event",<br>
+                        date: "2019-04-09T16:20:00.000Z",<br>
+                        description: "Coding a CRUD application together",<br>
+                        location: "Berkeley",<br>
+                        max_attendees: 8,<br>
+                        createdAt: "2019-01-08T03:14:07.000Z",<br>
+                        updatedAt: "2019-01-08T03:14:07.000Z",<br>
+                        CommunityId: 1<br>
+                        },<br>
+                        {<br>
+                        id: 2,<br>
+                        name: "Stanford spring event",<br>
+                        date: "2019-05-03T18:00:00.000Z",<br>
+                        description: "Spring fling party",<br>
+                        location: "Palo Alto",<br>
+                        max_attendees: 4,<br>
+                        createdAt: "2019-01-08T03:14:07.000Z",<br>
+                        updatedAt: "2019-01-08T03:14:07.000Z",<br>
+                        CommunityId: 2<br>
+                        },<br>
+                        {<br>
+                        id: 3,<br>
+                        name: "UCSF polar bear swim",<br>
+                        date: "2019-06-08T08:30:00.000Z",<br>
+                        description: "Swim in the bay",<br>
+                        location: "San Francisco",<br>
+                        max_attendees: 6,<br>
+                        createdAt: "2019-01-08T03:14:07.000Z",<br>
+                        updatedAt: "2019-01-08T03:14:07.000Z",<br>
+                        CommunityId: 3<br>
+                    }]<br>
+                    </samp>
+                </div>
+
+                <hr>
+
+                <div class="api-section">   
+                    <h5 class="api-header">Errors Response</h5> 
+                    <p>
+                        The Herd API redirects you to the root route if you fail to provide an API key in your query terms. 
+                        Please include a key!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
