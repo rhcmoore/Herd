@@ -1,4 +1,5 @@
 var db = require("../models");
+var moment = require('moment');
 
 module.exports = function(app) {
 
@@ -191,5 +192,77 @@ module.exports = function(app) {
         });
     });
 
+    // API communities route
+    app.get("/api/communities", function(req,res) {
+        // ex: /api/communities?APIkey=54321&name=UCB&description=Bootcamp
+        
+        // Grab query terms
+        var APIkey = req.query.APIkey;
+        var communityName = req.query.name;
+        var communityDesc = req.query.description;
+        if (!communityName) communityName = "";
+        if (!communityDesc) communityDesc = "";
 
+        // if no API key, exit
+        if (!APIkey) {
+            // send to page "Please enter an API key"
+            res.redirect("/");
+        } else {
+            db.Community.findAll({
+                where:{
+                    name: { $like: `%${communityName}%` },
+                    description: { $like: `%${communityDesc}%` }
+                }
+            }).then(function(data) {
+                res.json(data);
+            });
+        }
+    });
+
+    // API events route
+    app.get("/api/events", function(req,res) {
+        // ex: /api/events?APIkey=54321&name=UCB&description=Bootcamp&date=2019-08-04
+        
+        // Grab query terms
+        var APIkey = req.query.APIkey;
+        var eventName = req.query.name;
+        var eventDesc = req.query.description;
+        var eventDate = req.query.date;
+        var nextDay;
+        if (!eventName) eventName = "";
+        if (!eventDesc) eventDesc = "";
+        if (eventDate) {
+            eventDate = moment(eventDate).format("YYYY-MM-DD");
+            nextDay = moment(eventDate).add(1,'days').format("YYYY-MM-DD");
+        }
+        
+        // if no API key, exit
+        if (!APIkey) {
+            // "Please enter an API key"
+            res.redirect("/");
+        } else if (!eventDate) {
+            // Search all
+            db.Event.findAll({
+                where:{
+                    name: { $like: `%${eventName}%` },
+                    description: { $like: `%${eventDesc}%` }
+                }
+            }).then(function(data) {
+                res.json(data);
+            });
+        } else {
+            db.Event.findAll({
+                where:{
+                    name: { $like: `%${eventName}%` },
+                    description: { $like: `%${eventDesc}%` },
+                    date: {
+                        $gt: eventDate,
+                        $lt: nextDay
+                    }
+                }
+            }).then(function(data) {
+                res.json(data);
+            });
+        }
+    });
 };
