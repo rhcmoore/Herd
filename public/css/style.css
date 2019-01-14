@@ -96,6 +96,10 @@ h2 {
     font-size: 18px;
 }
 
+.col-lg-4 {
+    margin-bottom: 20px;
+}
+
 .container {
     padding-bottom: 40px;
 }
