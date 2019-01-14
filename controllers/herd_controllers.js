@@ -23,9 +23,11 @@ module.exports = function(app) {
         if(req.user){
             db.User.findAll({
                 include: [{
-                    model: db.Event,
-                    // model: db.Community
-                }]
+                    model: db.Event
+                    
+                },{
+                    model: db.Community
+                } ]
             }).then(function(data) {
                 var hbsObject = {
                     user: data
@@ -90,7 +92,7 @@ module.exports = function(app) {
         var userAttending = false;
         if(req.user){
             var userId = req.user.id;
-            db.UserCommunity.findOne({
+            db.UserEvent.findOne({
                 where: {userId: userId,
                     eventId: eventId
                 }    
@@ -99,6 +101,7 @@ module.exports = function(app) {
                 if (data){userAttending = true};
             })
         };
+        console.log(userAttending)
         db.Event.findOne({
             where: {id: eventId},
             include: [{
