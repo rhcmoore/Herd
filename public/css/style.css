@@ -191,3 +191,13 @@ h2 {
 .profile-photo .profile-email .profile-photo-light {
     display: none;
 }
+
+a {
+    color: #ff598f;
+}
+
+.page-footer {
+    background-color: #51c2d1;
+    color: white;
+    display: inline-block;
+}
