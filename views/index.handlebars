@@ -16,13 +16,14 @@
             <div class="row">
                     {{#each communities}}
                     {{#each Events}}
-                        <div class="col col-lg-4">
+                        <div class="col-lg-4 col-xs-12">
                             <div class="card h-100">
                                 {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                                 <div class="color-spacer event-spacer"></div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{name}}</h5>
                                     <p class="card-text">{{dot description}}</p>
+                                    <p class="card-text">{{location}}</p>
                                     <p class="card-text">{{moment date "dddd, MMMM Do YYYY"}}</p>
                                     <p class="card-text">{{moment date "h:mm A"}}</p>
                                     <div id="visit-event"><a href="/community/{{../name}}/event/{{name}}?eventId={{id}}" class="btn btn-primary">View Event</a></div>
@@ -41,7 +42,7 @@
             </div>
             <div class="row">
                 {{#each communities}}
-                    <div class="col col-lg-4">
+                    <div class="col-lg-4 col-xs-12">
                         <div class="card h-100">
                             {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                             <div class="color-spacer community-spacer"></div>

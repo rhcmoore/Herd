@@ -19,8 +19,20 @@
                     <p class="card-text">{{moment date "dddd, MMMM Do YYYY"}}</p>
                     <p class="card-text">{{moment date "h:mm A"}}</p>
                     <p class="card-text">{{description}}</p>
+                    <p class="card-text">{{location}}</p>
+                    <div>
+                        <iframe
+                            width="100%"
+                            height="400"
+                            max-width="600"
+                            max-height="400"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCgAWPuwUw7EMTiZhCSzc0GZxD8FBD2Om4
+                            &q={{location}}
+                            &attribution_source=Google+Maps+Embed+API">
+                        </iframe>
+                    </div>
                 </div>
-                <div class="event-page-spacer event-spacer"></div>
                 <div class="row">
                     <div class="col-lg-8 attendee-area">
                         Attendees:
@@ -62,9 +74,9 @@
                                 </div>
                                 <br>
                                 <label for="description">Phone:</label>
-                                <input placeholder="888-888-8888" class="form-control" rows="4" id="description" pattern="^\d{3}-\d{3}-\d{4}$" required></textarea>
+                                <input placeholder="888-888-8888" class="form-control" rows="4" id="description" pattern="\d{3}-\d{3}-\d{4}" required>
                                 <div class="invalid-feedback">
-                                Invalid phone number.
+                                Invalid phone.
                                 </div>
                                 <br>
                                 <button type="submit" class="btn btn-success submit">I'm Coming Too!</button>

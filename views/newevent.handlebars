@@ -1,4 +1,4 @@
-	<script src="/js/newevent.js" type="text/javascript"></script>
+<script src="/js/newevent.js" type="text/javascript"></script>
 
 <div class="container">
 
@@ -19,13 +19,16 @@
                     </div>
                     <br />
                     <label for="date">Date:</label>
-                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" required>
+                    <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" pattern="\d{4}/\d{2}/\d{2}\s+\d{2}:\d{2}" required>
                     <br />
                     <label for="description">Event Description:</label>
                     <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" pattern="[A-Za-z0-9]{6,400}" required></textarea>
                     <div class="invalid-feedback">
                     Please provide a description with the limit of 400 characters.
                     </div>
+                    <br />
+                    <label for="location">Event Location:</label>
+                    <input placeholder="San Francisco" type="text" class="form-control" id="location" pattern="[A-Za-z0-9]{1,100}" required>
                     <br />
                     <label for="max-attendees">Max Attendees:</label>
                     <input placeholder="30" type="number" class="form-control" id="max-attendees" required>
@@ -37,4 +40,3 @@
         </div>
         <div class="col-lg-3"></div>
     </div>
-</div>

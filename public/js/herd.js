@@ -12,14 +12,8 @@ $(document).ready(function() {
         $(this).css('color', selected[i]);
     });
 
-    $(".submit").click(function(event) {
-        var form = $('form');
-    
-        if (form[0].checkValidity() === false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        
+    $(".submit").on("click", function(event) {
+        var form = $('.needs-validation');
         form.addClass('was-validated');    
     });
 
