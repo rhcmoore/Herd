@@ -1,10 +1,10 @@
 <div class="container">
 <h1> DASH BOARD</h1>
+{{#each user}}
 <h2 class="row-title">My Events</h2> 
    <div class="row" id="events-row">
         <div class="container">
             <div class="row">
-                    {{#each user}}
                     {{#each Events}}
                         <div class="col-lg-4 col-xs-12">
                             <div class="card h-100">
@@ -21,7 +21,6 @@
                             </div>
                         </div>
                     {{/each}}
-                    {{/each}}
             </div>
         </div>
     </div>
@@ -32,7 +31,6 @@
         <div class="container">
          
             <div class="row">
-                {{#each user}}
                 {{#each Communities}}
                     <div class="col-lg-4 col-xs-12">
                         <div class="card h-100">
@@ -46,8 +44,8 @@
                         </div>
                     </div>
                 {{/each}}
-                {{/each}}
             </div>
         </div>
     </div>
 </div>
+{{/each}}

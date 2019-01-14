@@ -23,9 +23,11 @@ module.exports = function(app) {
         if(req.user){
             db.User.findAll({
                 include: [{
-                    model: db.Event,
-                    // model: db.Community
-                }]
+                    model: db.Event
+                    
+                },{
+                    model: db.Community
+                } ]
             }).then(function(data) {
                 var hbsObject = {
                     user: data
