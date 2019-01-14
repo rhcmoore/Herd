@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.TEXT,
         notNull: true
       },
+      location: {
+        type: DataTypes.TEXT,
+        notNull: true
+      },
       max_attendees:{
           type: DataTypes.INTEGER
       }

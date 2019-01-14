@@ -107,6 +107,7 @@ module.exports = function(app) {
             name: req.body.name,
             date: req.body.date,
             description: req.body.description,
+            location: req.body.location,
             max_attendees: req.body.max_attendees,
             CommunityId: req.body.communityId
         }).then(function(result){
@@ -132,6 +133,7 @@ module.exports = function(app) {
         db.Attendee.create({
             name: req.body.name,
             description: req.body.description,
+            location: req.body.location,
             EventId: req.body.eventId
         }).then(function(result){
             res.json(result);
@@ -159,6 +161,7 @@ module.exports = function(app) {
             name: req.body.name,
             date: req.body.date,
             description: req.body.body,
+            location: req.body.location,
             max_attendees: req.body.max_attendees,
             communityId: communityId
         }),{
