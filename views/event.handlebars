@@ -53,10 +53,15 @@
                            
                     </div>
                     <div class="col-lg-4 attendee-area">
-                        {{#if ../user}}
-                        <button id="userAttendee" type="button" class="btn btn-success" data-eventId="{{id}}" data-userId="{{../user.id}}">I'm Coming Too!</button>
+                        {{#if user}}
+                            {{#unless userAttending}}
+                            <button id="userAttendee" type="button" class="btn btn-success" data-eventId="{{Event.id}}" data-userId="{{user.id}}">I'm Coming Too!</button>
+                            {{/unless}}
+                           {{#if userAttending}}
+                            <button id="cancelAttend" type="button" class="btn btn-danger" data-eventId="{{Event.id}}" data-userId="{{user.id}}">Nevermind, I wont make it.</button>
+                            {{/if}}
                         {{/if}}
-                        {{#unless ../user}}
+                        {{#unless user}}
                         <form id="newEventAttendee" class="needs-validation" data-id="{{id}}" novalidate>
                             <div class="form-group">
                                 <label for="name">Name:</label>

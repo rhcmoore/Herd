@@ -14,7 +14,6 @@ module.exports = function(app) {
             var hbsObject = {
                 communities: data
             };
-            console.log(req.user);
 
             res.render("index", hbsObject);
         });
@@ -31,7 +30,6 @@ module.exports = function(app) {
                 var hbsObject = {
                     user: data
                 };
-                console.log(req.user);
                 res.render("dashboard", hbsObject);
             });
 
@@ -72,6 +70,18 @@ module.exports = function(app) {
     //event page
     app.get("/community/:community/event/:event", function(req,res){
         var eventId = req.query.eventId;
+        var userAttending = false;
+        if(req.user){
+            var userId = req.user.id;
+            db.UserEvent.findOne({
+                where: {userId: userId,
+                    eventId: eventId
+                }    
+            }).then(function(data){
+                console.log(data)
+                if (data){userAttending = true};
+            })
+        };
         db.Event.findOne({
             where: {id: eventId},
             include: [{
@@ -81,7 +91,8 @@ module.exports = function(app) {
             },
         ]}).then(function(data) {
             var hbsObject = {
-                Event: data
+                Event: data,
+                userAttending: userAttending
             };
             res.render("event", hbsObject);
         });
@@ -224,6 +235,21 @@ module.exports = function(app) {
         res.json(result);
         });
     });
+
+    
+    //cancel attendance
+    app.delete("/api/userEvent", function(req,res){
+        console.log(req.body.userId)
+        db.UserEvent.destroy({
+            where: {
+                userId: req.body.userId,
+                eventId: req.body.eventId
+            }
+          }).then(function(result) {
+          res.json(result);
+          });
+    });
+
 
     // API communities route
     app.get("/api/communities", function(req,res) {
