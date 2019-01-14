@@ -20,13 +20,16 @@
                     <input placeholder="February 11, 2019 20:00:00" type="text" class="form-control" id="date" pattern="\d{4}/\d{2}/\d{2}\s+\d{2}:\d{2}" required>
                     <br />
                     <label for="description">Event Description:</label>
-                    <textarea placeholder="We will vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" pattern="[A-Za-z0-9_]{1,400}" required></textarea>
+                    <textarea placeholder="We'll vote on a movie. Everyone bring something to share." class="form-control" rows="4" id="description" required></textarea>
                     <br />
                     <label for="location">Event Location:</label>
                     <input placeholder="San Francisco" type="text" class="form-control" id="location" required>
                     <br />
                     <label for="max-attendees">Max Attendees:</label>
                     <input placeholder="30" type="number" class="form-control" id="max-attendees" required>
+                    <br />
+                    <label for="image">Event Image:</label>
+                    <input placeholder="image link here" type="text" class="form-control" id="image" >
                     <br />
                     <button type="submit" class="btn btn-success submit">Submit</button>
                 </div>
