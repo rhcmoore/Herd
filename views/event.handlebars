@@ -15,8 +15,8 @@
                 {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
                 <div class="card-body">
                     <h3 class="card-title">{{Event.name}}</h3>
-                    <p class="card-text">{{moment date "dddd, MMMM Do YYYY"}}</p>
-                    <p class="card-text">{{moment date "h:mm A"}}</p>
+                    <p class="card-text">{{moment Event.date "dddd, MMMM Do YYYY"}}</p>
+                    <p class="card-text">{{moment Event.date "h:mm A"}}</p>
                     <p class="card-text">{{description}}</p>
                     <p class="card-text">{{Event.location}}</p>
                     <div>
