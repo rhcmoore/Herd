@@ -20,6 +20,9 @@ module.exports = function(sequelize, DataTypes) {
       Community.hasMany(models.Event, {
         onDelete: "cascade"
       });
+      Community.belongsToMany(models.User, {
+        through: {model: models.UserCommunity}
+      })
     }
   
     return Community; 
