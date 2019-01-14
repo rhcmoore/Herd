@@ -90,7 +90,7 @@ module.exports = function(app) {
         var userAttending = false;
         if(req.user){
             var userId = req.user.id;
-            db.UserCommunity.findOne({
+            db.UserEvent.findOne({
                 where: {userId: userId,
                     eventId: eventId
                 }    
@@ -99,6 +99,7 @@ module.exports = function(app) {
                 if (data){userAttending = true};
             })
         };
+        console.log(userAttending)
         db.Event.findOne({
             where: {id: eventId},
             include: [{
