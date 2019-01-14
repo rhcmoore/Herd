@@ -179,3 +179,7 @@ h2 {
 .show {
     display: block;
 }
+
+.api-section {
+    margin: 3%;
+}
