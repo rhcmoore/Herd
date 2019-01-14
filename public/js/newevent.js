@@ -9,6 +9,7 @@ $(document).ready(function() {
         var name = $("#name").val().trim();
         var date = $("#date").val();
         var description = $("#description").val();
+        var location = $("#location").val();
         var max_attendees = $("#max-attendees").val().trim();
         var communityId = $("#newEventForm").data("id");
         var communityName = $("#newEventForm").data("name");
@@ -21,6 +22,7 @@ $(document).ready(function() {
             name: name,
             date: date,
             description: description,
+            location: location,
             max_attendees: max_attendees,
             communityId: communityId
         }
