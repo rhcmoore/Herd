@@ -21,9 +21,9 @@
             <div class="col-lg-4">
                 <div class="card h-100">
                     {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
-                    <img class="card-img-top" src="{{image}}" alt="Card image cap">
+                    <a href="/community/{{../Community}}/event/{{name}}?eventId={{id}}"><img class="card-img-top" src="{{image}}" alt="Card image cap"></a>
                     <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
+                        <h5 class="card-title"><a href="/community/{{../Community}}/event/{{name}}?eventId={{id}}">{{name}}</a></h5>
                         <p class="card-text">{{description}}</p>
                         {{!-- <p class="card-text">{{date}}</p> --}}
 
