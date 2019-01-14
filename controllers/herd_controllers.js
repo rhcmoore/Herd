@@ -76,8 +76,10 @@ module.exports = function(app) {
             where: {id: eventId},
             include: [{
                 model: db.Attendee
-            }]
-        }).then(function(data) {
+            },{
+                model: db.User
+            },
+        ]}).then(function(data) {
             var hbsObject = {
                 Event: data
             };
@@ -109,7 +111,8 @@ module.exports = function(app) {
     app.post("/api/community/new", function(req, res) {
         db.Community.create({
             name: req.body.name,
-            description: req.body.description
+            description: req.body.description,
+            image: req.body.image
         }).then(function(result){
             res.json(result);
         })
@@ -124,7 +127,8 @@ module.exports = function(app) {
             description: req.body.description,
             location: req.body.location,
             max_attendees: req.body.max_attendees,
-            CommunityId: req.body.communityId
+            CommunityId: req.body.communityId,
+            image: req.body.image
         }).then(function(result){
             res.json(result);
         })
@@ -149,7 +153,9 @@ module.exports = function(app) {
             EventId:req.body.eventId
         }).then(function(result){
             res.json(result);
-        })
+        }).catch(function (err) {
+            res.json("You have already joined this event. ")
+        });
     });
 
     //new event attendee

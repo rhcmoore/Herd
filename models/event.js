@@ -18,6 +18,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       max_attendees:{
           type: DataTypes.INTEGER
+      },
+      image:{
+        type: DataTypes.STRING
       }
 
     });
