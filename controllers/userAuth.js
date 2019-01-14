@@ -28,24 +28,15 @@ module.exports = function(app) {
       passport.deserializeUser(function(id, done) {
         console.log("deserializeUser");
         db.User.findOne({
-            where:{
-                id: id
-            }
+            where: {id: id},
+                include: [{
+                    model: db.Event
+                }]
         }).then(function(user){
             done(null, user);
         })
       });
-    
-    // passport.serializeUser(function(user, done) {
-    //     console.log("serializeUser");
-    //     done(null, user.id);
-    // });
-    
-    // passport.deserializeUser(function(user, done) {
-    //     console.log("deserializeUser");
-    //     done(err, user);
-    // });
-      
+
     app.post('/login',  passport.authenticate('local'),
         function(req, res) {
             req.logIn(res.user, function (err) {

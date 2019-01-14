@@ -72,7 +72,7 @@ module.exports = function(app) {
     //event page
     app.get("/community/:community/event/:event", function(req,res){
         var eventId = req.query.eventId;
-        db.Event.findAll({
+        db.Event.findOne({
             where: {id: eventId},
             include: [{
                 model: db.Attendee
