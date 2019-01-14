@@ -1,4 +1,51 @@
 <div class="container">
 <h1> DASH BOARD</h1>
+<h2 class="row-title">My Events</h2> 
+   <div class="row" id="events-row">
+        <div class="container">
+            <div class="row">
+                    {{#each user}}
+                    {{#each Events}}
+                        <div class="col-lg-4 col-xs-12">
+                            <div class="card h-100">
+                                {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                                <div class="color-spacer event-spacer"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text">{{dot description}}</p>
+                                    <p class="card-text">{{location}}</p>
+                                    <p class="card-text">{{moment date "dddd, MMMM Do YYYY"}}</p>
+                                    <p class="card-text">{{moment date "h:mm A"}}</p>
+                                    <div id="visit-event"><a href="/community/{{../name}}/event/{{name}}?eventId={{id}}" class="btn btn-primary">View Event</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    {{/each}}
+            </div>
+        </div>
+    </div>
 
+<h2 class="row-title">My Communities</a></h2>
+
+    <div class="row" id="communities-row">
+        <div class="container">
+         
+            <div class="row">
+                {{#each communities}}
+                    <div class="col-lg-4 col-xs-12">
+                        <div class="card h-100">
+                            {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                            <div class="color-spacer community-spacer"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{name}}</h5>
+                                <p class="card-text">{{dot description}}</p>
+                                <div id="visit-community"><a href="/community/{{name}}?communityId={{id}}" class="btn btn-primary">Visit</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
 </div>
