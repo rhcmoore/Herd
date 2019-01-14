@@ -40,7 +40,7 @@ module.exports = function(app) {
     app.post('/login',  passport.authenticate('local'),
         function(req, res) {
             req.logIn(res.user, function (err) {
-             res.json('/');
+             res.json('/dashboard');
             })
         }
     );
