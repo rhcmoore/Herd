@@ -22,28 +22,25 @@ module.exports = function(app) {
       ));
       passport.serializeUser(function(user, done) {
         console.log("serializeUser");
-        done(null, user);
+        done(null, user.id);
       });
     
-      passport.deserializeUser(function(user, done) {
+      passport.deserializeUser(function(id, done) {
         console.log("deserializeUser");
-          done(null, user);
+        db.User.findOne({
+            where: {id: id},
+                include: [{
+                    model: db.Event
+                }]
+        }).then(function(user){
+            done(null, user);
+        })
       });
-    
-    // passport.serializeUser(function(user, done) {
-    //     console.log("serializeUser");
-    //     done(null, user.id);
-    // });
-    
-    // passport.deserializeUser(function(user, done) {
-    //     console.log("deserializeUser");
-    //     done(err, user);
-    // });
-      
+
     app.post('/login',  passport.authenticate('local'),
         function(req, res) {
             req.logIn(res.user, function (err) {
-             res.json('/');
+             res.json('/dashboard');
             })
         }
     );
