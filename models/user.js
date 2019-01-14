@@ -18,6 +18,9 @@ module.exports = function(sequelize, DataTypes) {
       User.belongsToMany(models.Event, {
         through: {model: models.UserEvent}
       })
+      User.belongsToMany(models.Community, {
+        through: {model: models.UserCommunity}
+      })
     }
 
     User.prototype.validPassword = function(password) {
