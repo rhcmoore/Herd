@@ -22,8 +22,20 @@ module.exports = function(app) {
 
     app.get("/dashboard", function(req, res){
         if(req.user){
-            console.log(req.user);
-            res.render("dashboard");
+            db.User.findAll({
+                include: [{
+                    model: db.Event,
+                    // model: db.Community
+                }]
+            }).then(function(data) {
+                var hbsObject = {
+                    user: data
+                };
+                console.log(req.user);
+                res.render("dashboard", hbsObject);
+            });
+
+
         }
         else{
             res.redirect("/login");
@@ -128,6 +140,16 @@ module.exports = function(app) {
             res.json(result);
         })
 
+    });
+
+    //creates the link for user and event
+    app.post("/api/userEvent", function(req,res){
+        db.UserEvent.create({
+            UserId:req.body.userId,
+            EventId:req.body.eventId
+        }).then(function(result){
+            res.json(result);
+        })
     });
 
     //new event attendee
