@@ -14,7 +14,9 @@ $(document).ready(function() {
         if (!name || !description) {
             return;
          }
-
+        if (!image){
+            image = "https://www.elmwood.k12.wi.us/cms_files/text194_2.gif"
+        }
         var newCommunity ={
             name: name,
             description: description,

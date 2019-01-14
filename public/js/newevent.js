@@ -17,7 +17,9 @@ $(document).ready(function() {
         if (!name || !date  || !description || !max_attendees) {
             return;
         }
-
+        if (!image){
+            image = "https://eh.bard.edu/wp-content/themes/kingpower-child/images/event-placeholder-list.png"
+        }
         var newEvent ={
             name: name,
             date: date,
