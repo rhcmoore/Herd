@@ -58,12 +58,4 @@ $(document).ready(function() {
         }
     });
 
-    // Geocoding Map
-    
-    var geocoder = new google.maps.Geocoder();
-    var marker = new google.maps.Marker({
-        map: map,
-        position: latlng
-    }); 
-
 });
