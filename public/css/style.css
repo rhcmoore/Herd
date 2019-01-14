@@ -183,3 +183,7 @@ h2 {
 .api-section {
     margin: 3%;
 }
+
+.profile-photo .profile-email .profile-photo-light {
+    display: none;
+}
