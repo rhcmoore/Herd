@@ -33,6 +33,8 @@ $(document).ready(function() {
 
     }
 
+    // Datetimepicker
+
     var date = new Date();
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     var tomorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate()+1);
@@ -47,11 +49,21 @@ $(document).ready(function() {
     step: 30
     });
 
+    // Date validation
+
     $(".submit").on("click", function(){
     var current = new Date(Date.parse($("#date").val()));
         if (current < today) {
         $("#date").removeClass("form-control").addClass("invalid").after('<div class="invalid-feedback show">Date cannot be in the past.</div>');
         }
     });
+
+    // Geocoding Map
+    
+    var geocoder = new google.maps.Geocoder();
+    var marker = new google.maps.Marker({
+        map: map,
+        position: latlng
+    }); 
 
 });
