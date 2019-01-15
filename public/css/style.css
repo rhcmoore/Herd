@@ -197,7 +197,7 @@ a {
 }
 
 .page-footer {
-    background-color: #51c2d1;
-    color: white;
+    /* background-color: #51c2d1; */
+    color: black;
     display: inline-block;
 }
