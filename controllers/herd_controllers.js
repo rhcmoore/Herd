@@ -33,6 +33,7 @@ module.exports = function(app) {
                 var hbsObject = {
                     user: data
                 };
+                console.log(data.Communities)
                 res.render("dashboard", hbsObject);
             });
 
