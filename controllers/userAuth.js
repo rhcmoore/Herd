@@ -17,6 +17,7 @@ module.exports = function(app) {
                 }
                 console.log("success")
                 return done(null, user);
+                
             });
         }
       ));
@@ -27,13 +28,15 @@ module.exports = function(app) {
     
       passport.deserializeUser(function(id, done) {
         console.log("deserializeUser");
+        console.log(id)
         db.User.findOne({
             where: {id: id},
                 include: [{
                     model: db.Event
                 }]
-        }).then(function(user){
-            done(null, user);
+        }).then(function(data){
+            console.log(data)
+            done(null, data);
         })
       });
 
