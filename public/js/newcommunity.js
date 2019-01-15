@@ -25,7 +25,7 @@ $(document).ready(function() {
 
         $.post("/api/community/new", newCommunity, function(data) {
 
-            window.location.href = "/community/"+ name;
+            window.location.href = "/community/"+ name + "?communityId=" + data.id;
           });
     }
     

@@ -26,7 +26,6 @@
 		</button>
 		<div class="collapse navbar-collapse " id="navbarNavAltMarkup">
 		<div class="navbar-nav ml-auto">
-			<a class="nav-item nav-link" href="/api">Developers</a>
 			<a class="nav-item nav-link" href="/dashboard">Dashboard</a>
 			<a class="nav-item nav-link" href="/signout">Sign out</a>
 			</div>
@@ -41,7 +40,6 @@
 		</button>
 		<div class="collapse navbar-collapse " id="navbarNavAltMarkup">
 		<div class="navbar-nav ml-auto">
-			<a class="nav-item nav-link" href="/api">Developers</a>
 			<a class="nav-item nav-link" href="/login">Login</a>
 			<a class="nav-item nav-link" href="/signup">Sign up</a>
 		</div>
@@ -52,15 +50,47 @@
 
 	{{{ body }}}
 
-{{!-- footer --}}
-  <footer class="" style="!margin:0;">
-	  <hr>
-        <div class="container text-secondary" style="padding:0;">             
-            <p>hello</p> 
-			<p>footer info</p>         
-			<p>meetup</p>        
-			<p>copyrighted</p>                  
-        </div>   
-    </footer>
+<!-- Footer -->
+<footer class="page-footer font-small pt-4">
+
+    <!-- Footer Elements -->
+    <div class="container" style="padding:0">
+			<hr>
+
+      <!-- Social buttons -->
+			<a href="/" class="btn-floating btn-fb mx-1" >
+				About
+			</a>
+				<a href="/api" class="btn-floating btn-fb mx-1">
+				Developers
+			</a>
+      {{!-- <ul class="">
+        <li class="list-inline-item">
+          <a href="/" class="btn-floating btn-fb mx-1" >
+            About
+          </a>
+        </li>
+      </ul>
+	  <ul class="">
+        <li class="list-inline-item">
+          <a href="/api" class="btn-floating btn-fb mx-1">
+            Developers
+          </a>
+        </li>
+      </ul> --}}
+      <!-- Social buttons -->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center">© 2019 Herd
+      <a href="https://mdbootstrap.com/education/bootstrap/">
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
 </body>
 </html>
