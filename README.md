@@ -1,2 +1,2 @@
-# Project2
-Group Project 2
+# Herd
+https://herd-up.herokuapp.com/
