@@ -21,7 +21,8 @@ module.exports = function(app) {
 
     app.get("/dashboard", function(req, res){
         if(req.user){
-            db.User.findAll({
+            db.User.findOne({
+                where:{id: req.user.id},
                 include: [{
                     model: db.Event
                     
@@ -32,7 +33,6 @@ module.exports = function(app) {
                 var hbsObject = {
                     user: data
                 };
-                console.log(data)
                 res.render("dashboard", hbsObject);
             });
 
