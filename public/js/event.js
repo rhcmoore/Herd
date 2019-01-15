@@ -9,7 +9,7 @@ $(document).ready(function() {
 
         var name = $("#name").val().trim();        
         var description = $("#description").val();
-        if (!name) {
+        if (!name || !description || description.length !== 12) {
             return;
          }
         var newAttendee ={
