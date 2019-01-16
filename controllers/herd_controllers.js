@@ -19,30 +19,6 @@ module.exports = function(app) {
         });
     }); 
 
-    app.get("/dashboard", function(req, res){
-        if(req.user){
-            db.User.findOne({
-                where:{id: req.user.id},
-                include: [{
-                    model: db.Event
-                    
-                },{
-                    model: db.Community
-                } ]
-            }).then(function(data) {
-                var hbsObject = {
-                    user: data
-                };
-                console.log(data.Communities)
-                res.render("dashboard", hbsObject);
-            });
-
-
-        }
-        else{
-            res.redirect("/login");
-        }
-    });
 
     //login page
 
@@ -59,7 +35,6 @@ module.exports = function(app) {
     //community page
     app.get("/community/:community", function(req,res){
         var communityId = req.query.communityId;
-        console.log(communityId);
         var userJoined = false;
         if(req.user){
             var userId = req.user.id;
@@ -68,7 +43,6 @@ module.exports = function(app) {
                     communityId: communityId
                 }    
             }).then(function(data){
-                console.log(data)
                 if (data){userJoined = true};
             })
         };
@@ -91,6 +65,9 @@ module.exports = function(app) {
     app.get("/community/:community/event/:event", function(req,res){
         var eventId = req.query.eventId;
         var userAttending = false;
+        console.log("community")
+
+        console.log(req.user)
         if(req.user){
             var userId = req.user.id;
             db.UserEvent.findOne({
@@ -102,7 +79,6 @@ module.exports = function(app) {
                 if (data){userAttending = true};
             })
         };
-        console.log(userAttending)
         db.Event.findOne({
             where: {id: eventId},
             include: [{
@@ -118,6 +94,31 @@ module.exports = function(app) {
             res.render("event", hbsObject);
         });
     }); 
+    
+    app.get("/dashboard", function(req, res){
+  
+        if(req.user){
+            db.User.findOne({
+                where: {id: req.user.id},
+                include: [{
+                    model: db.Event
+                    
+                },{
+                    model: db.Community
+                } ]
+            }).then(function(data) {
+                var hbsObject = {
+                    user: data
+                };
+                res.render("dashboard", hbsObject);
+            });
+
+
+        }
+        else{
+            res.redirect("/login");
+        }
+    });
 
     //create new community page
     app.get("/api/community/:community/new", function (req,res){
@@ -152,7 +153,6 @@ module.exports = function(app) {
 
     //create new event
     app.post("/api/community/:community/event/new", function(req, res) {
-       console.log("community id: " + req.body.communityId);
         db.Event.create({
             name: req.body.name,
             date: req.body.date,
@@ -192,8 +192,7 @@ module.exports = function(app) {
 
      //creates the link for user and community
      app.post("/api/userCommunity", function(req,res){
-         console.log(req.body.userId)
-         console.log(req.body.communityId)
+       
         db.UserCommunity.create({
             UserId:req.body.userId,
             CommunityId:req.body.communityId
@@ -206,7 +205,6 @@ module.exports = function(app) {
 
     //new event attendee
     app.post("/api/attendee", function(req, res){
-        console.log(req.body.eventId)
         db.Attendee.create({
             name: req.body.name,
             description: req.body.description,
@@ -274,7 +272,6 @@ module.exports = function(app) {
     
     //cancel attendance
     app.delete("/api/userEvent", function(req,res){
-        console.log(req.body.userId)
         db.UserEvent.destroy({
             where: {
                 userId: req.body.userId,
@@ -288,7 +285,6 @@ module.exports = function(app) {
 
      //cancel community
      app.delete("/api/userCommunity", function(req,res){
-        console.log(req.body.userId)
         db.UserCommunity.destroy({
             where: {
                 userId: req.body.userId,
