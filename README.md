@@ -15,6 +15,12 @@ This web application use a standard MVC design pattern to dynamically interact w
 
 Check out our public API at: [herd-app.herokuapp.com/api/](https://herd-app.herokuapp.com/api/) 
 
+If you don't want to create an account, use our dummy account:
+
+* un: ryanmoore
+
+* pw: password
+
 <img src="public/img/ribbon.png" width="100%"> 
 
 ## Built With
