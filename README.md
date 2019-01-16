@@ -1,6 +1,11 @@
 # [Herd](rhcmoore.github.io/Project2/)
 
-Visit: [herd-app.herokuapp.com](https://herd-app.herokuapp.com/) 
+Visit: [herd-app.herokuapp.com](https://herd-app.herokuapp.com/)   
+
+To test user profiles, sign up or use our test user profile.  
+
+Username: testuser  
+Password: password  
 
 <img src="public/img/demo.png" width="100%">
 
